@@ -270,6 +270,8 @@
                         <outlet property="addButton" destination="MgB-c1-qm3" id="jac-fF-KTw"/>
                         <outlet property="clearButton" destination="M6Q-vM-AFM" id="dBP-bF-tvC"/>
                         <outlet property="decimalButton" destination="0vU-gM-OlI" id="xmD-qA-KxU"/>
+                        <outlet property="displayLabel" destination="62F-CJ-L4h" id="ml7-bZ-Mmt"/>
+                        <outlet property="displayView" destination="dE8-p0-8N0" id="Q4Z-Pc-9h1"/>
                         <outlet property="divideButton" destination="Msr-71-fye" id="kTz-q5-sj9"/>
                         <outlet property="equalsButton" destination="xm2-2x-lkZ" id="Oki-eH-qn3"/>
                         <outlet property="minusButton" destination="7Iv-XH-VCl" id="dC8-hG-BXP"/>

@@ -9,6 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var displayView: UIView!
+    @IBOutlet weak var displayLabel: UILabel!
+    
     @IBOutlet weak var pinPadButton0: UIButton!
     @IBOutlet weak var pinPadButton1: UIButton!
     @IBOutlet weak var pinPadButton2: UIButton!
@@ -19,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pinPadButton7: UIButton!
     @IBOutlet weak var pinPadButton8: UIButton!
     @IBOutlet weak var pinPadButton9: UIButton!
+    @IBOutlet weak var decimalButton: UIButton!
     
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var negateButton: UIButton!
@@ -30,7 +34,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
-    @IBOutlet weak var decimalButton: UIButton!
+    var currentTheme: CalculatorTheme {
+        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#000000", extraFunctionTitleColor: "#FFFFFF", operationColor: "#000000", operationTitleColor: "#FFFFFF", pinPadColor: "#000000", pinPadTitleColor: "#FFFFFF")
+    }
     
     
     override func viewDidLoad() {
@@ -38,27 +44,40 @@ class ViewController: UIViewController {
         decorateView()
         // Do any additional setup after loading the view.
     }
-
+    
     private func decorateView() {
-        decorateButton(pinPadButton0)
-        decorateButton(pinPadButton1)
-        decorateButton(pinPadButton2)
-        decorateButton(pinPadButton3)
-        decorateButton(pinPadButton4)
-        decorateButton(pinPadButton5)
-        decorateButton(pinPadButton6)
-        decorateButton(pinPadButton7)
-        decorateButton(pinPadButton8)
-        decorateButton(pinPadButton9)
-        decorateButton(clearButton)
-        decorateButton(negateButton)
-        decorateButton(percentageButton)
-        decorateButton(equalsButton)
-        decorateButton(divideButton)
-        decorateButton(addButton)
-        decorateButton(minusButton)
-        decorateButton(decimalButton)
-        decorateButton(multiplyButton)
+
+        view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
+        displayLabel.textColor = UIColor(hex: currentTheme.displayColor)
+        
+        decorateButtons()
+    }
+    
+    private func decorateButtons() {
+        decoratePinPadButton(pinPadButton0)
+        decoratePinPadButton(pinPadButton1)
+        decoratePinPadButton(pinPadButton2)
+        decoratePinPadButton(pinPadButton3)
+        decoratePinPadButton(pinPadButton4)
+        decoratePinPadButton(pinPadButton5)
+        decoratePinPadButton(pinPadButton6)
+        decoratePinPadButton(pinPadButton7)
+        decoratePinPadButton(pinPadButton8)
+        decoratePinPadButton(pinPadButton9)
+        decoratePinPadButton(decimalButton)
+        
+        decorateExternalFunctionButton(clearButton)
+        decorateExternalFunctionButton(negateButton)
+        decorateExternalFunctionButton(percentageButton)
+        
+        decorateOperationButton(equalsButton)
+        decorateOperationButton(divideButton)
+        decorateOperationButton(multiplyButton)
+        decorateOperationButton(addButton)
+        decorateOperationButton(minusButton)
+        
+        
+        
     }
     
     private func decorateButton(_ button: UIButton) {
@@ -68,16 +87,26 @@ class ViewController: UIViewController {
     }
     
     private func decorateExternalFunctionButton(_ button: UIButton) {
+        decorateButton(button)
         
+        button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
+        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
     }
     
     private func decorateOperationButton(_ button: UIButton) {
+        decorateButton(button)
+
         
+        button.tintColor = UIColor(hex: currentTheme.operationColor)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
     }
     
     private func decoratePinPadButton(_ button: UIButton) {
-        
-    }
+        decorateButton(button)
 
+        
+        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
+    }
 }
 

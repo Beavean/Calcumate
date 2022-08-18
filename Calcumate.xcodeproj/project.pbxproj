@@ -14,6 +14,8 @@
 		0864DA1228AD1A2400276538 /* Calcumate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA1028AD1A2400276538 /* Calcumate.xcdatamodeld */; };
 		0864DA1428AD1A2600276538 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0864DA1328AD1A2600276538 /* Assets.xcassets */; };
 		0864DA1728AD1A2600276538 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0864DA1528AD1A2600276538 /* LaunchScreen.storyboard */; };
+		0864DA1F28AE2FAF00276538 /* UIColor+HexValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA1E28AE2FAF00276538 /* UIColor+HexValue.swift */; };
+		0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA2028AE312D00276538 /* CalculatorTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		0864DA1328AD1A2600276538 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0864DA1628AD1A2600276538 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0864DA1828AD1A2600276538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0864DA1E28AE2FAF00276538 /* UIColor+HexValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexValue.swift"; sourceTree = "<group>"; };
+		0864DA2028AE312D00276538 /* CalculatorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				0864DA0728AD1A2400276538 /* AppDelegate.swift */,
 				0864DA0928AD1A2400276538 /* SceneDelegate.swift */,
 				0864DA0B28AD1A2400276538 /* ViewController.swift */,
+				0864DA2028AE312D00276538 /* CalculatorTheme.swift */,
 				0864DA0D28AD1A2400276538 /* Main.storyboard */,
+				0864DA1E28AE2FAF00276538 /* UIColor+HexValue.swift */,
 				0864DA1328AD1A2600276538 /* Assets.xcassets */,
 				0864DA1528AD1A2600276538 /* LaunchScreen.storyboard */,
 				0864DA1828AD1A2600276538 /* Info.plist */,
@@ -141,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0864DA1F28AE2FAF00276538 /* UIColor+HexValue.swift in Sources */,
+				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* ViewController.swift in Sources */,
 				0864DA1228AD1A2400276538 /* Calcumate.xcdatamodeld in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
