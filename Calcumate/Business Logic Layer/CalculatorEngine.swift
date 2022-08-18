@@ -9,91 +9,77 @@ import Foundation
 
 struct CalculatorEngine {
     
-    enum OperandSide {
-        case leftSide
-        case rightSide
-    }
+    //MARK: - Input Manager
     
-    //MARK: - Mathematical Equation
+    private var inputManager = MathInputManager()
     
-    private var mathematicalEquation = MathematicalEquation(leftSide: .zero)
-    private var operandSide = OperandSide.leftSide
+    //MARK: - Equation history
+    
+    private var historyLog: [MathematicalEquation] = []
     
     //MARK: - Display
     
-    var displayText = ""
+    var displayText: String {
+        return inputManager.displayText
+    }
     
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
-        mathematicalEquation = MathematicalEquation(leftSide: .zero)
-        displayText = mathematicalEquation.leftSide.formatted()
-        operandSide = .leftSide
+        inputManager = MathInputManager()
     }
     
     mutating func negatePressed() {
-        switch operandSide {
-        case .leftSide:
-            mathematicalEquation.negateLeftSide()
-            displayText = mathematicalEquation.leftSide.formatted()
-        case .rightSide:
-            mathematicalEquation.negateRightSide()
-            displayText = mathematicalEquation.rightSide?.formatted() ?? "Error"
-        }
+        inputManager.negatePressed()
     }
     
     mutating func percentagePressed() {
-        switch operandSide {
-        case .leftSide:
-            mathematicalEquation.percentageLeftSide()
-            displayText = mathematicalEquation.leftSide.formatted()
-        case .rightSide:
-            mathematicalEquation.percentageRightSide()
-            displayText = mathematicalEquation.rightSide?.formatted() ?? "Error"
-        }
+        inputManager.percentagePressed()
     }
     
     // MARK: - Operations
     
     mutating func addPressed() {
-        mathematicalEquation.operation = .add
-        operandSide = .rightSide
+        inputManager.addPressed()
     }
     
     mutating func subtractPressed() {
-        mathematicalEquation.operation = .subtract
-        operandSide = .rightSide
+        inputManager.subtractPressed()
     }
     
     mutating func multiplyPressed() {
-        mathematicalEquation.operation = .multiply
-        operandSide = .rightSide
+        inputManager.multiplyPressed()
     }
     
     mutating func dividePressed() {
-        mathematicalEquation.operation = .divide
-        operandSide = .rightSide
+        inputManager.dividePressed()
     }
     
     mutating func equalsPressed() {
-        mathematicalEquation.execute()
-        displayText = mathematicalEquation.result?.formatted() ?? "Error"
+        inputManager.execute()
+        historyLog.append(inputManager.mathematicalEquation)
+        printEquationToConsole()
     }
     
     // MARK: - Number Input
     
     mutating func decimalPressed() {
-        
+        inputManager.decimalPressed()
     }
     
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        displayText = decimalValue.formatted()
-        switch operandSide {
-        case .leftSide:
-            mathematicalEquation.leftSide = decimalValue
-        case .rightSide:
-            mathematicalEquation.rightSide = decimalValue
-        }
+        inputManager.numberPressed(number)
+    }
+    
+    //MARK: - Console
+    
+    private func printEquationToConsole() {
+        print("Equation: " + inputManager.mathematicalEquation.generatePrintout())
+    }
+    
+    //MARK: - History Log
+    
+    private mutating func clearHistory() {
+        historyLog = []
     }
 }

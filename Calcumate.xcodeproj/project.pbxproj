@@ -20,6 +20,7 @@
 		0864DA2D28AE420600276538 /* CalcumateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA2C28AE420600276538 /* CalcumateUITestsLaunchTests.swift */; };
 		0864DA3A28AE422E00276538 /* MathematicalEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA3928AE422E00276538 /* MathematicalEquationTests.swift */; };
 		0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4028AE474300276538 /* CalculatorEngine.swift */; };
+		0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4928AE59E200276538 /* MathInputManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0864DA3728AE422E00276538 /* CalcumateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalcumateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0864DA3928AE422E00276538 /* MathematicalEquationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathematicalEquationTests.swift; sourceTree = "<group>"; };
 		0864DA4028AE474300276538 /* CalculatorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
+		0864DA4928AE59E200276538 /* MathInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA4028AE474300276538 /* CalculatorEngine.swift */,
+				0864DA4928AE59E200276538 /* MathInputManager.swift */,
 			);
 			path = "Business Logic Layer";
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
+				0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */,
 				0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */,
 				0864DA2328AE3B3200276538 /* MathematicalEquation.swift in Sources */,
 				0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */,

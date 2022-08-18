@@ -66,4 +66,20 @@ struct MathematicalEquation {
         return decimal / 100
     }
     
+    //MARK: - String representation
+    
+    func generatePrintout() -> String{
+        let operationString = "+"
+        return leftSide.formatted() + " " + operationString + " " + (rightSide?.formatted() ?? "") + " = " + (result?.formatted() ?? "")
+    }
+    
+    private func generateStringFromOperation() -> String {
+        switch operation {
+        case .add: return "+"
+        case .subtract: return "-"
+        case .multiply: return "*"
+        case .divide: return "/"
+        case .none: return ""
+        }
+    }
 }
