@@ -21,10 +21,14 @@ struct MathematicalEquation {
     var operation: OperationType?
     var result: Decimal?
     
+    //MARK: - Execution
+    
     mutating func execute() {
+        
         guard let rightSide = self.rightSide, let operation = self.operation else {
             return
         }
+        
         switch operation {
         case .add:
             result = leftSide + rightSide
@@ -35,6 +39,31 @@ struct MathematicalEquation {
         case .divide:
             result = leftSide / rightSide
         }
+    }
+    
+    //MARK: - Negate
+    
+    mutating func negateLeftSide() {
+        leftSide.negate()
+    }
+    
+    mutating func negateRightSide() {
+        rightSide?.negate()
+    }
+    
+    //MARK: - Percentage
+    
+    mutating func percentageLeftSide() {
+        leftSide = calculatePercentageValue(leftSide)
+    }
+    
+    mutating func percentageRightSide() {
+        guard let decimal = rightSide else { return }
+        rightSide = calculatePercentageValue(decimal)
+    }
+    
+    private func calculatePercentageValue(_ decimal: Decimal) -> Decimal {
+        return decimal / 100
     }
     
 }
