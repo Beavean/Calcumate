@@ -18,6 +18,10 @@ struct MathInputManager {
     
     private var operandSide = OperandSide.leftSide
     
+    //MARK: - Constants
+    
+    let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    
     //MARK: - Mathematical Equation
     
     private(set) var mathematicalEquation = MathematicalEquation(leftSide: .zero)
@@ -29,7 +33,7 @@ struct MathInputManager {
     //MARK: - Initialiser
     
     init() {
-        displayText = mathematicalEquation.leftSide.formatted()
+        displayText = formatDisplay(mathematicalEquation.leftSide)
     }
     
     //MARK: - Extra Functions
@@ -38,10 +42,10 @@ struct MathInputManager {
         switch operandSide {
         case .leftSide:
             mathematicalEquation.negateLeftSide()
-            displayText = mathematicalEquation.leftSide.formatted()
+            displayText = formatDisplay(mathematicalEquation.leftSide)
         case .rightSide:
             mathematicalEquation.negateRightSide()
-            displayText = mathematicalEquation.rightSide?.formatted() ?? "Error"
+            displayText = formatDisplay(mathematicalEquation.rightSide)
         }
     }
     
@@ -49,10 +53,10 @@ struct MathInputManager {
         switch operandSide {
         case .leftSide:
             mathematicalEquation.percentageLeftSide()
-            displayText = mathematicalEquation.leftSide.formatted()
+            displayText = formatDisplay(mathematicalEquation.leftSide)
         case .rightSide:
             mathematicalEquation.percentageRightSide()
-            displayText = mathematicalEquation.rightSide?.formatted() ?? "Error"
+            displayText = formatDisplay(mathematicalEquation.rightSide)
         }
     }
     
@@ -80,7 +84,7 @@ struct MathInputManager {
     
     mutating func execute() {
         mathematicalEquation.execute()
-        displayText = mathematicalEquation.result?.formatted() ?? "Error"
+        displayText = formatDisplay(mathematicalEquation.result)
     }
     
     // MARK: - Number Input
@@ -90,14 +94,38 @@ struct MathInputManager {
     }
     
     mutating func numberPressed(_ number: Int) {
-        let decimalValue = Decimal(number)
-        displayText = decimalValue.formatted()
+        guard number >= -9, number <= 9 else { return }
         switch operandSide {
         case .leftSide:
-            mathematicalEquation.leftSide = decimalValue
+            let tuple = appendNewNumber(number, previousInput: mathematicalEquation.leftSide)
+            mathematicalEquation.leftSide = tuple.number
+            displayText = tuple.displayText
         case .rightSide:
-            mathematicalEquation.rightSide = decimalValue
+            let tuple = appendNewNumber(number, previousInput: mathematicalEquation.rightSide ?? .zero)
+            mathematicalEquation.rightSide = tuple.number
+            displayText = tuple.displayText
         }
+    }
+    
+    private func appendNewNumber(_ number: Int, previousInput: Decimal) -> (number: Decimal, displayText: String) {
+       let stringInput = String(number)
+        var newString = previousInput.isZero ? "" : displayText
+        newString.append(stringInput)
+        newString = newString.replacingOccurrences(of: groupingSymbol, with: "")
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        guard let convertedNumber = formatter.number(from: newString) else { return (.nan, "Error") }
+        let newNumber = convertedNumber.decimalValue
+        let newDisplayText = formatDisplay(newNumber)
+        return (newNumber, newDisplayText)
+    }
+    
+    //MARK: - Display Formatting
+    
+    private func formatDisplay(_ decimal: Decimal?) -> String {
+        guard let decimal = decimal else { return "Error" }
+        return decimal.formatted()
     }
     
 }
