@@ -30,32 +30,39 @@ struct CalculatorEngine {
     }
     
     mutating func negatePressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.negatePressed()
     }
     
     mutating func percentagePressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.percentagePressed()
     }
     
     // MARK: - Operations
     
     mutating func addPressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.addPressed()
     }
     
     mutating func subtractPressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.subtractPressed()
     }
     
     mutating func multiplyPressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.multiplyPressed()
     }
     
     mutating func dividePressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.dividePressed()
     }
     
     mutating func equalsPressed() {
+        guard inputManager.isCompleted == false else { return }
         inputManager.execute()
         historyLog.append(inputManager.mathematicalEquation)
         printEquationToConsole()

@@ -22,6 +22,7 @@
 		0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4028AE474300276538 /* CalculatorEngine.swift */; };
 		0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4928AE59E200276538 /* MathInputManager.swift */; };
 		0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4B28AFE30C00276538 /* String+Prefix.swift */; };
+		0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4E28B02B1700276538 /* ColorThemes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		0864DA4028AE474300276538 /* CalculatorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
 		0864DA4928AE59E200276538 /* MathInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputManager.swift; sourceTree = "<group>"; };
 		0864DA4B28AFE30C00276538 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
+		0864DA4E28B02B1700276538 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA2028AE312D00276538 /* CalculatorTheme.swift */,
+				0864DA4E28B02B1700276538 /* ColorThemes.swift */,
 				0864DA2228AE3B3200276538 /* MathematicalEquation.swift */,
 			);
 			path = "Data Layer";
@@ -335,6 +338,7 @@
 				0864DA1F28AE2FAF00276538 /* UIColor+HexValue.swift in Sources */,
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
+				0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
 				0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */,
 				0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */,

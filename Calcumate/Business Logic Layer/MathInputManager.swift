@@ -23,6 +23,7 @@ struct MathInputManager {
     private let groupingSymbol = Locale.current.groupingSeparator ?? ","
     private let decimalSymbol = Locale.current.decimalSeparator ?? "."
     private let minusSymbol = "-"
+    private let errorMessage = "Error"
     
     //MARK: - Mathematical Equation
     
@@ -42,6 +43,7 @@ struct MathInputManager {
     //MARK: - Extra Functions
     
     mutating func negatePressed() {
+        guard isCompleted == false else { return }
         switch operandSide {
         case .leftSide:
             mathematicalEquation.negateLeftSide()
@@ -63,6 +65,7 @@ struct MathInputManager {
     }
     
     mutating func percentagePressed() {
+        guard isCompleted == false else { return }
         switch operandSide {
         case .leftSide:
             mathematicalEquation.percentageLeftSide()
@@ -76,26 +79,31 @@ struct MathInputManager {
     // MARK: - Operations
     
     mutating func addPressed() {
+        guard isCompleted == false else { return }
         mathematicalEquation.operation = .add
         startEditingRightSide()
     }
     
     mutating func subtractPressed() {
+        guard isCompleted == false else { return }
         mathematicalEquation.operation = .subtract
         startEditingRightSide()
     }
     
     mutating func multiplyPressed() {
+        guard isCompleted == false else { return }
         mathematicalEquation.operation = .multiply
         startEditingRightSide()
     }
     
     mutating func dividePressed() {
+        guard isCompleted == false else { return }
         mathematicalEquation.operation = .divide
         startEditingRightSide()
     }
     
     mutating func execute() {
+        guard isCompleted == false else { return }
         mathematicalEquation.execute()
         displayText = formatDisplay(mathematicalEquation.result)
     }
@@ -144,7 +152,7 @@ struct MathInputManager {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        guard let convertedNumber = formatter.number(from: newString) else { return (.nan, "Error") }
+        guard let convertedNumber = formatter.number(from: newString) else { return (.nan, errorMessage) }
         let newNumber = convertedNumber.decimalValue
         let newDisplayText = formatDisplay(newNumber)
         return (newNumber, newDisplayText)
@@ -156,7 +164,7 @@ struct MathInputManager {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        guard let convertedNumber = formatter.number(from: newDisplayText) else { return (.nan, "Error") }
+        guard let convertedNumber = formatter.number(from: newDisplayText) else { return (.nan, errorMessage) }
         let newNumber = convertedNumber.decimalValue
         return (newNumber, newDisplayText)
     }
@@ -164,8 +172,14 @@ struct MathInputManager {
     //MARK: - Display Formatting
     
     private func formatDisplay(_ decimal: Decimal?) -> String {
-        guard let decimal = decimal else { return "Error" }
+        guard let decimal = decimal, decimal.isNaN == false else { return errorMessage }
         return decimal.formatted()
+    }
+    
+    //MARK: - Computed Properties
+    
+    var isCompleted: Bool {
+        return mathematicalEquation.executed
     }
     
 }

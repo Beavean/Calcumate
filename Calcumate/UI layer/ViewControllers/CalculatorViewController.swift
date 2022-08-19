@@ -9,7 +9,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
-    //MARK: - IBOutlest
+    //MARK: - IBOutlets
     
     @IBOutlet weak var displayView: UIView!
     @IBOutlet weak var displayLabel: UILabel!
@@ -38,8 +38,8 @@ class CalculatorViewController: UIViewController {
     
     //MARK: - Color themes
     
-    var currentTheme: CalculatorTheme {
-        return CalculatorTheme(backgroundColor: "#000000", displayColor: "#FFFFFF", extraFunctionColor: "#a6a6a6", extraFunctionTitleColor: "#FFFFFF", operationColor: "#ff9a0a", operationTitleColor: "#FFFFFF", pinPadColor: "#333333", pinPadTitleColor: "#FFFFFF")
+    private var currentTheme: CalculatorTheme {
+        return electroTheme
     }
     
     //MARK: - Calculator Engine
@@ -59,6 +59,7 @@ class CalculatorViewController: UIViewController {
     
     private func decorateView() {
         view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
+        displayView.backgroundColor = .clear
         displayLabel.textColor = UIColor(hex: currentTheme.displayColor)
         decorateButtons()
     }

@@ -23,12 +23,14 @@ struct MathematicalEquation {
     
     //MARK: - Execution
     
+    var executed: Bool {
+        return result != nil
+    }
+    
     mutating func execute() {
-        
         guard let rightSide = self.rightSide, let operation = self.operation else {
             return
         }
-        
         switch operation {
         case .add:
             result = leftSide + rightSide
