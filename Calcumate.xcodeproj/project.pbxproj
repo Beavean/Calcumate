@@ -21,6 +21,7 @@
 		0864DA3A28AE422E00276538 /* MathematicalEquationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA3928AE422E00276538 /* MathematicalEquationTests.swift */; };
 		0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4028AE474300276538 /* CalculatorEngine.swift */; };
 		0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4928AE59E200276538 /* MathInputManager.swift */; };
+		0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4B28AFE30C00276538 /* String+Prefix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0864DA3928AE422E00276538 /* MathematicalEquationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathematicalEquationTests.swift; sourceTree = "<group>"; };
 		0864DA4028AE474300276538 /* CalculatorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorEngine.swift; sourceTree = "<group>"; };
 		0864DA4928AE59E200276538 /* MathInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputManager.swift; sourceTree = "<group>"; };
+		0864DA4B28AFE30C00276538 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		0864DA0628AD1A2400276538 /* Calcumate */ = {
 			isa = PBXGroup;
 			children = (
+				0864DA4D28AFE3EE00276538 /* Swift Extensions */,
 				0864DA4328AE4EA400276538 /* UI layer */,
 				0864DA4728AE4F2F00276538 /* Business Logic Layer */,
 				0864DA4828AE4F4C00276538 /* Data Layer */,
@@ -188,6 +191,14 @@
 				0864DA2228AE3B3200276538 /* MathematicalEquation.swift */,
 			);
 			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		0864DA4D28AFE3EE00276538 /* Swift Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0864DA4B28AFE30C00276538 /* String+Prefix.swift */,
+			);
+			path = "Swift Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +336,7 @@
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
+				0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */,
 				0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */,
 				0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */,
 				0864DA2328AE3B3200276538 /* MathematicalEquation.swift in Sources */,

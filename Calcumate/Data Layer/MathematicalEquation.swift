@@ -69,7 +69,7 @@ struct MathematicalEquation {
     //MARK: - String representation
     
     func generatePrintout() -> String{
-        let operationString = "+"
+        let operationString = generateStringFromOperation()
         return leftSide.formatted() + " " + operationString + " " + (rightSide?.formatted() ?? "") + " = " + (result?.formatted() ?? "")
     }
     

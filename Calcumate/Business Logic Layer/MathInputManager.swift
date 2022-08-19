@@ -20,11 +20,14 @@ struct MathInputManager {
     
     //MARK: - Constants
     
-    let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    private let groupingSymbol = Locale.current.groupingSeparator ?? ","
+    private let decimalSymbol = Locale.current.decimalSeparator ?? "."
+    private let minusSymbol = "-"
     
     //MARK: - Mathematical Equation
     
     private(set) var mathematicalEquation = MathematicalEquation(leftSide: .zero)
+    private var isEnteringDecimal = false
     
     //MARK: - Display
     
@@ -42,10 +45,20 @@ struct MathInputManager {
         switch operandSide {
         case .leftSide:
             mathematicalEquation.negateLeftSide()
-            displayText = formatDisplay(mathematicalEquation.leftSide)
+            addNegateSymbolToDisplay(mathematicalEquation.leftSide)
         case .rightSide:
             mathematicalEquation.negateRightSide()
-            displayText = formatDisplay(mathematicalEquation.rightSide)
+            addNegateSymbolToDisplay(mathematicalEquation.rightSide)
+        }
+    }
+    
+    private mutating func addNegateSymbolToDisplay(_ decimal: Decimal?) {
+        guard let decimal = decimal else { return }
+        let isNegativeValue = decimal < 0 ? true : false
+        if isNegativeValue {
+            displayText.addPrefixIfNeeded(minusSymbol)
+        } else {
+            displayText.removePrefixIfNeeded(minusSymbol)
         }
     }
     
@@ -64,22 +77,22 @@ struct MathInputManager {
     
     mutating func addPressed() {
         mathematicalEquation.operation = .add
-        operandSide = .rightSide
+        startEditingRightSide()
     }
     
     mutating func subtractPressed() {
         mathematicalEquation.operation = .subtract
-        operandSide = .rightSide
+        startEditingRightSide()
     }
     
     mutating func multiplyPressed() {
         mathematicalEquation.operation = .multiply
-        operandSide = .rightSide
+        startEditingRightSide()
     }
     
     mutating func dividePressed() {
         mathematicalEquation.operation = .divide
-        operandSide = .rightSide
+        startEditingRightSide()
     }
     
     mutating func execute() {
@@ -87,10 +100,25 @@ struct MathInputManager {
         displayText = formatDisplay(mathematicalEquation.result)
     }
     
+    //MARK: - Editing Right Side
+    
+    private mutating func startEditingRightSide() {
+        operandSide = .rightSide
+        isEnteringDecimal = false
+    }
+    
     // MARK: - Number Input
     
     mutating func decimalPressed() {
-        
+        isEnteringDecimal = true
+        displayText = appendDecimalPointIfNeeded(displayText)
+    }
+    
+    private func appendDecimalPointIfNeeded(_ string: String) -> String {
+        if string.contains(decimalSymbol) {
+            return string
+        }
+        return string.appending(decimalSymbol)
     }
     
     mutating func numberPressed(_ number: Int) {
@@ -108,7 +136,8 @@ struct MathInputManager {
     }
     
     private func appendNewNumber(_ number: Int, previousInput: Decimal) -> (number: Decimal, displayText: String) {
-       let stringInput = String(number)
+        guard isEnteringDecimal == false else { return appendNewDecimalNumber(number) }
+        let stringInput = String(number)
         var newString = previousInput.isZero ? "" : displayText
         newString.append(stringInput)
         newString = newString.replacingOccurrences(of: groupingSymbol, with: "")
@@ -118,6 +147,17 @@ struct MathInputManager {
         guard let convertedNumber = formatter.number(from: newString) else { return (.nan, "Error") }
         let newNumber = convertedNumber.decimalValue
         let newDisplayText = formatDisplay(newNumber)
+        return (newNumber, newDisplayText)
+    }
+    
+    private func appendNewDecimalNumber(_ number: Int) -> (number: Decimal, displayText: String) {
+        let stringInput = String(number)
+        let newDisplayText = displayText.appending(stringInput)
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        guard let convertedNumber = formatter.number(from: newDisplayText) else { return (.nan, "Error") }
+        let newNumber = convertedNumber.decimalValue
         return (newNumber, newDisplayText)
     }
     
