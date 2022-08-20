@@ -24,6 +24,7 @@
 		0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4B28AFE30C00276538 /* String+Prefix.swift */; };
 		0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4E28B02B1700276538 /* ColorThemes.swift */; };
 		0864DA5128B0E6AE00276538 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA5028B0E6AE00276538 /* ThemeManager.swift */; };
+		0864DA5328B104DF00276538 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA5228B104DF00276538 /* DataStoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0864DA4B28AFE30C00276538 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 		0864DA4E28B02B1700276538 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
 		0864DA5028B0E6AE00276538 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		0864DA5228B104DF00276538 /* DataStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				0864DA2028AE312D00276538 /* CalculatorTheme.swift */,
 				0864DA4E28B02B1700276538 /* ColorThemes.swift */,
 				0864DA2228AE3B3200276538 /* MathematicalEquation.swift */,
+				0864DA5228B104DF00276538 /* DataStoreManager.swift */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				0864DA2328AE3B3200276538 /* MathematicalEquation.swift in Sources */,
 				0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */,
 				0864DA5128B0E6AE00276538 /* ThemeManager.swift in Sources */,
+				0864DA5328B104DF00276538 /* DataStoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
