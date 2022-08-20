@@ -23,6 +23,7 @@
 		0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4928AE59E200276538 /* MathInputManager.swift */; };
 		0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4B28AFE30C00276538 /* String+Prefix.swift */; };
 		0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA4E28B02B1700276538 /* ColorThemes.swift */; };
+		0864DA5128B0E6AE00276538 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA5028B0E6AE00276538 /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		0864DA4928AE59E200276538 /* MathInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathInputManager.swift; sourceTree = "<group>"; };
 		0864DA4B28AFE30C00276538 /* String+Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Prefix.swift"; sourceTree = "<group>"; };
 		0864DA4E28B02B1700276538 /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
+		0864DA5028B0E6AE00276538 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		0864DA4728AE4F2F00276538 /* Business Logic Layer */ = {
 			isa = PBXGroup;
 			children = (
+				0864DA5028B0E6AE00276538 /* ThemeManager.swift */,
 				0864DA4028AE474300276538 /* CalculatorEngine.swift */,
 				0864DA4928AE59E200276538 /* MathInputManager.swift */,
 			);
@@ -345,6 +348,7 @@
 				0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */,
 				0864DA2328AE3B3200276538 /* MathematicalEquation.swift in Sources */,
 				0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */,
+				0864DA5128B0E6AE00276538 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

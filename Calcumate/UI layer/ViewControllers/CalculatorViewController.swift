@@ -13,6 +13,7 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var displayView: UIView!
     @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var themeChangeButton: UIButton!
     
     @IBOutlet weak var pinPadButton0: UIButton!
     @IBOutlet weak var pinPadButton1: UIButton!
@@ -39,7 +40,7 @@ class CalculatorViewController: UIViewController {
     //MARK: - Color themes
     
     private var currentTheme: CalculatorTheme {
-        return electroTheme
+        return ThemeManager.shared.currentTheme
     }
     
     //MARK: - Calculator Engine
@@ -51,17 +52,38 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        decorateView()
+        redecorateView()
         // Do any additional setup after loading the view.
     }
     
+    //MARK: - Theme Button actions
+    
+    @IBAction func changeThemeButtonPressed(_ sender: UIButton) {
+        decorateViewWithNextTheme()
+    }
+    
+    
     //MARK: - Decoration
     
-    private func decorateView() {
+    private func decorateViewWithNextTheme() {
+        ThemeManager.shared.moveToNextTheme()
+        redecorateView()
+    }
+    
+    private func redecorateView() {
         view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
         displayView.backgroundColor = .clear
         displayLabel.textColor = UIColor(hex: currentTheme.displayColor)
+        themeChangeButton.tintColor = UIColor(hex: currentTheme.displayColor)
+        setNeedsStatusBarAppearanceUpdate()
         decorateButtons()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch currentTheme.statusBarStyle {
+        case .light: return .lightContent
+        case .dark: return .darkContent
+        }
     }
     
     private func decorateButtons() {
@@ -97,7 +119,7 @@ class CalculatorViewController: UIViewController {
         decorateButton(button)
         button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
         button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
     }
     
     private func decorateOperationButton(_ button: UIButton) {
