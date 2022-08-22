@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0839651928B38C3E00C2E19D /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651828B38C3E00C2E19D /* DisplayView.swift */; };
 		0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0728AD1A2400276538 /* AppDelegate.swift */; };
 		0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0928AD1A2400276538 /* SceneDelegate.swift */; };
 		0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0839651828B38C3E00C2E19D /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		0864DA0428AD1A2400276538 /* Calcumate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calcumate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0864DA0728AD1A2400276538 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0864DA0928AD1A2400276538 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0839651A28B38D4800C2E19D /* UIKit Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				0839651828B38C3E00C2E19D /* DisplayView.swift */,
+			);
+			path = "UIKit Subclasses";
+			sourceTree = "<group>";
+		};
 		0864D9FB28AD1A2400276538 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		0864DA4328AE4EA400276538 /* UI layer */ = {
 			isa = PBXGroup;
 			children = (
+				0839651A28B38D4800C2E19D /* UIKit Subclasses */,
 				0864DA4428AE4ED600276538 /* UIkit Extensions */,
 				0864DA0728AD1A2400276538 /* AppDelegate.swift */,
 				0864DA0928AD1A2400276538 /* SceneDelegate.swift */,
@@ -348,6 +359,7 @@
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
 				0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */,
 				0864DA4A28AE59E200276538 /* MathInputManager.swift in Sources */,
+				0839651928B38C3E00C2E19D /* DisplayView.swift in Sources */,
 				0864DA4128AE474300276538 /* CalculatorEngine.swift in Sources */,
 				0864DA2328AE3B3200276538 /* MathematicalEquation.swift in Sources */,
 				0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */,

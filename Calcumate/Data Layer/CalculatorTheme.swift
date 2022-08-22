@@ -22,6 +22,8 @@ struct CalculatorTheme: Codable {
     
     let operationColor: String
     let operationTitleColor: String
+    let operationSelectedColor: String
+    let operationTitleSelectedColor: String
     
     let pinPadColor: String
     let pinPadTitleColor: String

@@ -17,6 +17,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#FFFFFF",
                                operationColor: "#8D3362",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#AA0E67",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#C64661",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .light)
@@ -30,6 +32,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#FFFFFF",
                                operationColor: "#4566B6",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#4566B6",
+                               operationTitleSelectedColor: "#FFFFFF",
                                pinPadColor: "#1D1D1D",
                                pinPadTitleColor:"#767676",
                                statusBarStyle: .light)
@@ -43,6 +47,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#000000",
                                operationColor: "#ff9f0a",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#ffffff",
+                               operationTitleSelectedColor: "#ff9f0a",
                                pinPadColor: "#333333",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .light)
@@ -56,6 +62,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#4BE6A9",
                                operationColor: "#4BE6A9",
                                operationTitleColor: "#14145C",
+                               operationSelectedColor: "#70729D",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#14145C",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .light)
@@ -69,6 +77,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#00B4FF",
                                operationColor: "#00B4FF",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#0265FF",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#EEEEEE",
                                pinPadTitleColor:"#000000",
                                statusBarStyle: .dark)
@@ -82,6 +92,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#4BE6A9",
                                operationColor: "#4BE6A9",
                                operationTitleColor: "#14145C",
+                               operationSelectedColor: "#70729D",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#E9F0F4",
                                pinPadTitleColor:"#000000",
                                statusBarStyle: .dark)
@@ -95,6 +107,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#FFFFFF",
                                operationColor: "#CC4D4D",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#AB2F2F",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#C94848",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .light)
@@ -108,6 +122,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#EBF0EF",
                                operationColor: "#FA569C",
                                operationTitleColor: "#EBF0EF",
+                               operationSelectedColor: "#0265FF",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#16253A",
                                pinPadTitleColor:"#EBF0EF",
                                statusBarStyle: .light)
@@ -121,6 +137,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#7550FE",
                                operationColor: "#7550FE",
                                operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#4566B6",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#1D1D1D",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .dark)
@@ -134,6 +152,8 @@ extension ThemeManager {
                                extraFunctionTitleColor: "#5487BA",
                                operationColor: "#A3CFF9",
                                operationTitleColor: "#5487BA",
+                               operationSelectedColor: "#0D2A4B",
+                               operationTitleSelectedColor: "#ffffff",
                                pinPadColor: "#1D1D1D",
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .dark)

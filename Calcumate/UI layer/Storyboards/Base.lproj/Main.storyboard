@@ -35,7 +35,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="D6T-bE-wMz">
                                 <rect key="frame" x="20.5" y="208.5" width="373" height="613.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-p0-8N0">
+                                    <view contentMode="scaleToFill" restorationIdentifier="DisplayView" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-p0-8N0" customClass="DisplayView" customModule="Calcumate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="62F-CJ-L4h">
@@ -52,6 +52,9 @@
                                             <constraint firstAttribute="bottom" secondItem="62F-CJ-L4h" secondAttribute="bottom" id="aB9-Gt-z8J"/>
                                             <constraint firstAttribute="trailing" secondItem="62F-CJ-L4h" secondAttribute="trailing" constant="10" id="j7g-BB-MuO"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="label" destination="62F-CJ-L4h" id="7D9-5J-Xkf"/>
+                                        </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-tZ-LKc">
                                         <rect key="frame" x="0.0" y="144" width="373" height="81.5"/>
@@ -352,7 +355,6 @@
                         <outlet property="addButton" destination="MgB-c1-qm3" id="jac-fF-KTw"/>
                         <outlet property="clearButton" destination="M6Q-vM-AFM" id="dBP-bF-tvC"/>
                         <outlet property="decimalButton" destination="0vU-gM-OlI" id="xmD-qA-KxU"/>
-                        <outlet property="displayLabel" destination="62F-CJ-L4h" id="ml7-bZ-Mmt"/>
                         <outlet property="displayView" destination="dE8-p0-8N0" id="Q4Z-Pc-9h1"/>
                         <outlet property="divideButton" destination="Msr-71-fye" id="kTz-q5-sj9"/>
                         <outlet property="equalsButton" destination="xm2-2x-lkZ" id="Oki-eH-qn3"/>

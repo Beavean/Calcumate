@@ -11,8 +11,7 @@ class CalculatorViewController: UIViewController {
     
     //MARK: - IBOutlets
     
-    @IBOutlet weak var displayView: UIView!
-    @IBOutlet weak var displayLabel: UILabel!
+    @IBOutlet weak var displayView: DisplayView!
     @IBOutlet weak var themeChangeButton: UIButton!
     
     @IBOutlet weak var pinPadButton0: UIButton!
@@ -73,7 +72,7 @@ class CalculatorViewController: UIViewController {
     private func redecorateView() {
         view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
         displayView.backgroundColor = .clear
-        displayLabel.textColor = UIColor(hex: currentTheme.displayColor)
+        displayView.label.textColor = UIColor(hex: currentTheme.displayColor)
         themeChangeButton.tintColor = UIColor(hex: currentTheme.displayColor)
         setNeedsStatusBarAppearanceUpdate()
         decorateButtons()
@@ -126,6 +125,7 @@ class CalculatorViewController: UIViewController {
         decorateButton(button)
         button.tintColor = UIColor(hex: currentTheme.operationColor)
         button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleSelectedColor), for: .selected)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
     }
     
@@ -135,9 +135,26 @@ class CalculatorViewController: UIViewController {
         button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
     }
+    
+    //MARK: - Select Operation Buttons
+    
+    private func deselectOperationButton() {
+        selectOperationButton(divideButton, false)
+        selectOperationButton(multiplyButton, false)
+        selectOperationButton(minusButton, false)
+        selectOperationButton(addButton, false)
+        
+    }
+    
+    private func selectOperationButton(_ button: UIButton, _ selected: Bool) {
+        button.tintColor = selected ? UIColor(hex: currentTheme.operationSelectedColor) : UIColor(hex: currentTheme.operationColor)
+        button.isSelected = selected
+    }
+    
     // MARK: - IBActions
     
     @IBAction private func clearPressed() {
+        deselectOperationButton()
         calculatorEngine.clearPressed()
         refreshDisplay()
     }
@@ -155,21 +172,29 @@ class CalculatorViewController: UIViewController {
     // MARK: - Operations
     
     @IBAction private func addPressed() {
+        deselectOperationButton()
+        selectOperationButton(addButton, true)
         calculatorEngine.addPressed()
         refreshDisplay()
     }
     
     @IBAction private func minusPressed() {
+        deselectOperationButton()
+        selectOperationButton(minusButton, true)
         calculatorEngine.subtractPressed()
         refreshDisplay()
     }
     
     @IBAction private func multiplyPressed() {
+        deselectOperationButton()
+        selectOperationButton(multiplyButton, true)
         calculatorEngine.multiplyPressed()
         refreshDisplay()
     }
     
     @IBAction private func dividePressed() {
+        deselectOperationButton()
+        selectOperationButton(divideButton, true)
         calculatorEngine.dividePressed()
         refreshDisplay()
     }
@@ -182,11 +207,13 @@ class CalculatorViewController: UIViewController {
     // MARK: - Number Input
     
     @IBAction private func decimalPressed() {
+        deselectOperationButton()
         calculatorEngine.decimalPressed()
         refreshDisplay()
     }
     
     @IBAction private func numberPressed(_ sender: UIButton) {
+        deselectOperationButton()
         let number = sender.tag
         calculatorEngine.numberPressed(number)
         refreshDisplay()
@@ -195,7 +222,7 @@ class CalculatorViewController: UIViewController {
     //MARK: - Refresh Display
     
     private func refreshDisplay() {
-        displayLabel.text = calculatorEngine.displayText
+        displayView.label.text = calculatorEngine.displayText
     }
 }
 
