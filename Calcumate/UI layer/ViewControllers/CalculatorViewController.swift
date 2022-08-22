@@ -52,7 +52,7 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         redecorateView()
-        // Do any additional setup after loading the view.
+        registerForNotifications()
     }
     
     //MARK: - Theme Button actions
@@ -223,6 +223,24 @@ class CalculatorViewController: UIViewController {
     
     private func refreshDisplay() {
         displayView.label.text = calculatorEngine.displayText
+    }
+    
+    //MARK: - Notifications
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePasteNotification(notification:)), name: Notification.Name("Calcumate.DisplayView.pasteNumber"), object: nil)
+    }
+    
+    @objc private func didReceivePasteNotification(notification: Notification){
+        guard let doubleValue = notification.userInfo?["PasteKey"] as? Double else { return }
+        pasteNumberIntoCalculator(from: Decimal(doubleValue))
+    }
+    
+    //MARK: - Copy & Paste
+    
+    private func pasteNumberIntoCalculator(from decimal: Decimal) {
+        calculatorEngine.pasteInNumber(from: decimal)
+        refreshDisplay()
     }
 }
 

@@ -182,4 +182,15 @@ struct MathInputManager {
         return mathematicalEquation.executed
     }
     
+    //MARK: - Copy & Paste
+    
+    mutating func pasteIn(_ decimal: Decimal) {
+        switch operandSide {
+        case .leftSide:
+            mathematicalEquation.leftSide = decimal
+        case .rightSide:
+            mathematicalEquation.rightSide = decimal
+        }
+        displayText = formatDisplay(decimal)
+    }
 }

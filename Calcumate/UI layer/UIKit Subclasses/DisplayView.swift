@@ -45,10 +45,46 @@ class DisplayView: UIView {
         }
     }
     
+    //MARK: - UI Menu Controller
+    
     private func showMenu(from gestureRecogniser: UILongPressGestureRecognizer) {
+        becomeFirstResponder()
         let menu = UIMenuController.shared
         guard menu.isMenuVisible == false else { return }
-        
-        
+        let locationOfGesture = gestureRecogniser.location(in: self)
+        var rect = bounds
+        rect.origin = locationOfGesture
+        rect.origin.y = rect.origin.y - 30
+        rect.size = CGSize(width: 1, height: 44)
+        menu.showMenu(from: self, rect: rect)
+    }
+    
+    private func hideMenu() {
+        UIMenuController.shared.hideMenu(from: self)
+    }
+    
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:))
+    }
+    
+    @objc override func copy(_ sender: Any?) {
+        UIPasteboard.general.string = label.text
+    }
+    
+    override func paste(_ sender: Any?) {
+        guard let pasteNumber = UIPasteboard.general.string?.doubleValue else { return }
+        let userInfo: [AnyHashable: Any] = ["PasteKey": pasteNumber]
+        NotificationCenter.default.post(name: Notification.Name("Calcumate.DisplayView.pasteNumber"), object: nil, userInfo: userInfo)
+    }
+    
+    //MARK: - Color Themes methods
+    
+    func prepareForColorThemeUpdate() {
+        hideMenu()
     }
 }
