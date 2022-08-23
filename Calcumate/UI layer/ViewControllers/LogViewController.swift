@@ -8,6 +8,10 @@
 import UIKit
 
 class LogViewController: UITableViewController {
+    
+    //MARK: - Datasource
+    
+    var datasource: [MathematicalEquation] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +26,27 @@ class LogViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return datasource.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquationTableViewCell", for: indexPath) as? EquationTableViewCell else { return UITableViewCell() }
+        let equation = datasource[indexPath.row]
+        cell.leftSideLabel.text = equation.leftSide.formatted()
+        cell.rightSideLabel.text = equation.generateStringFromOperation() + " " + (equation.rightSide?.formatted() ?? "")
+        cell.resultLabel.text = "= " + (equation.result?.formatted() ?? "")
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -75,7 +75,7 @@ struct MathematicalEquation {
         return leftSide.formatted() + " " + operationString + " " + (rightSide?.formatted() ?? "") + " = " + (result?.formatted() ?? "")
     }
     
-    private func generateStringFromOperation() -> String {
+    func generateStringFromOperation() -> String {
         switch operation {
         case .add: return "+"
         case .subtract: return "-"
