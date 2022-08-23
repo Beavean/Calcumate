@@ -418,7 +418,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Iqx-UD-72s"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>

@@ -98,4 +98,10 @@ struct CalculatorEngine {
         }
         inputManager.pasteIn(decimal)
     }
+    
+    mutating func pasteInMathEquation(from mathEquation: MathematicalEquation) {
+        guard let result = mathEquation.result else { return }
+        inputManager = MathInputManager()
+        pasteInNumber(from: result)
+    }
 }

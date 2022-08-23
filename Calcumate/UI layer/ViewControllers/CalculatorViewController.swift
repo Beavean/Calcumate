@@ -242,6 +242,13 @@ class CalculatorViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceivePasteNotification(notification:)), name: Notification.Name("Calcumate.DisplayView.pasteNumber"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveHistoryLogNotification(notification:)), name: Notification.Name("Calcumate.DisplayView.displayHistory"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceivePasteMathEquationNotification(notification:)), name: Notification.Name("Calcumate.LogView.pasteMathEquation"), object: nil)
+    }
+    
+    @objc private func didReceivePasteMathEquationNotification(notification: Notification) {
+        guard let mathEquation = notification.userInfo?["PasteKey"] as? MathematicalEquation else { return }
+        pasteMathEquationIntoCalculator(from: mathEquation)
     }
     
     @objc private func didReceivePasteNotification(notification: Notification){
@@ -253,17 +260,30 @@ class CalculatorViewController: UIViewController {
         presentHistoryLogView()
     }
     
+    
+    //MARK: - History Log View
+    
     private func presentHistoryLogView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let logViewController = storyboard.instantiateViewController(withIdentifier: "LogViewController") as? LogViewController else { return }
         logViewController.datasource = calculatorEngine.historyLog
-        present(logViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: logViewController)
+        let theme = ThemeManager.shared.currentTheme
+        navigationController.navigationBar.backgroundColor = UIColor(hex: theme.backgroundColor)
+        navigationController.navigationBar.tintColor = UIColor(hex: theme.displayColor)
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        present(navigationController, animated: true)
     }
     
     //MARK: - Copy & Paste
     
     private func pasteNumberIntoCalculator(from decimal: Decimal) {
         calculatorEngine.pasteInNumber(from: decimal)
+        refreshDisplay()
+    }
+    
+    private func pasteMathEquationIntoCalculator(from mathEquation: MathematicalEquation) {
+        calculatorEngine.pasteInMathEquation(from: mathEquation)
         refreshDisplay()
     }
 }

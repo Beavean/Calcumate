@@ -15,14 +15,20 @@ class LogViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        decorateView()
+        setupNavigationBar()
     }
 
+    //MARK: - Navigation Bar
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+    }
+    
+    @objc private func doneButtonPressed() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,57 +46,44 @@ class LogViewController: UITableViewController {
         cell.leftSideLabel.text = equation.leftSide.formatted()
         cell.rightSideLabel.text = equation.generateStringFromOperation() + " " + (equation.rightSide?.formatted() ?? "")
         cell.resultLabel.text = "= " + (equation.result?.formatted() ?? "")
+        cell.selectedBackgroundView = UIView()
+        decorateCell(cell)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let equation = datasource[indexPath.row]
+        let userInfo: [AnyHashable: Any] = ["PasteKey" : equation]
+        NotificationCenter.default.post(name: NSNotification.Name("Calcumate.LogView.pasteMathEquation"), object: nil, userInfo: userInfo)
+        dismiss(animated: true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    //MARK: - Decorate
+    
+    private func decorateCell(_ cell: EquationTableViewCell) {
+        let theme = ThemeManager.shared.currentTheme
+        cell.backgroundColor = UIColor(hex: theme.backgroundColor)
+        cell.selectedBackgroundView?.backgroundColor = UIColor(hex: theme.operationColor)
+        cell.resultLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.leftSideLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.rightSideLabel.textColor = UIColor(hex: theme.displayColor)
+        cell.resultLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        cell.leftSideLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        cell.rightSideLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    private func decorateView() {
+        let theme = ThemeManager.shared.currentTheme
+        tableView.backgroundColor = UIColor(hex: theme.backgroundColor)
+        tableView.tintColor = UIColor(hex: theme.displayColor)
+        tableView.separatorColor = UIColor(hex: theme.displayColor)
+        switch theme.statusBarStyle {
+        case .dark: tableView.indicatorStyle = .black
+        case .light: tableView.indicatorStyle = .white
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
