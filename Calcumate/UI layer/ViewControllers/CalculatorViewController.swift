@@ -58,6 +58,7 @@ class CalculatorViewController: UIViewController {
     //MARK: - Theme Button actions
     
     @IBAction func changeThemeButtonPressed(_ sender: UIButton) {
+        sender.bounce()
         decorateViewWithNextTheme()
     }
     
@@ -154,17 +155,20 @@ class CalculatorViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction private func clearPressed() {
+        clearButton.bounce()
         deselectOperationButton()
         calculatorEngine.clearPressed()
         refreshDisplay()
     }
     
     @IBAction private func negatePressed() {
+        negateButton.bounce()
         calculatorEngine.negatePressed()
         refreshDisplay()
     }
     
     @IBAction private func percentagePressed() {
+        percentageButton.bounce()
         calculatorEngine.percentagePressed()
         refreshDisplay()
     }
@@ -172,6 +176,7 @@ class CalculatorViewController: UIViewController {
     // MARK: - Operations
     
     @IBAction private func addPressed() {
+        addButton.bounce()
         deselectOperationButton()
         selectOperationButton(addButton, true)
         calculatorEngine.addPressed()
@@ -179,6 +184,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func minusPressed() {
+        minusButton.bounce()
         deselectOperationButton()
         selectOperationButton(minusButton, true)
         calculatorEngine.subtractPressed()
@@ -186,6 +192,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func multiplyPressed() {
+        multiplyButton.bounce()
         deselectOperationButton()
         selectOperationButton(multiplyButton, true)
         calculatorEngine.multiplyPressed()
@@ -193,6 +200,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func dividePressed() {
+        divideButton.bounce()
         deselectOperationButton()
         selectOperationButton(divideButton, true)
         calculatorEngine.dividePressed()
@@ -200,6 +208,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func equalsPressed() {
+        equalsButton.bounce()
         calculatorEngine.equalsPressed()
         refreshDisplay()
     }
@@ -207,12 +216,14 @@ class CalculatorViewController: UIViewController {
     // MARK: - Number Input
     
     @IBAction private func decimalPressed() {
+        decimalButton.bounce()
         deselectOperationButton()
         calculatorEngine.decimalPressed()
         refreshDisplay()
     }
     
     @IBAction private func numberPressed(_ sender: UIButton) {
+        sender.bounce()
         deselectOperationButton()
         let number = sender.tag
         calculatorEngine.numberPressed(number)

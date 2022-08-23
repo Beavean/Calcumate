@@ -26,6 +26,7 @@ class DisplayView: UIView {
     }
     
     private func sharedInit() {
+        layer.cornerRadius = self.frame.height / 10
         addMenuGestureRecogniser()
     }
     
@@ -48,6 +49,8 @@ class DisplayView: UIView {
     //MARK: - UI Menu Controller
     
     private func showMenu(from gestureRecogniser: UILongPressGestureRecognizer) {
+        registerNotifications()
+        selectScreen()
         becomeFirstResponder()
         let menu = UIMenuController.shared
         guard menu.isMenuVisible == false else { return }
@@ -84,7 +87,47 @@ class DisplayView: UIView {
     
     //MARK: - Color Themes methods
     
-    func prepareForColorThemeUpdate() {
+    func prepareForThemeUpdate() {
+        deselectScreen(animated: false)
         hideMenu()
+    }
+    
+    //MARK: - Animations
+    
+    private func selectScreen() {
+        let theme = ThemeManager.shared.currentTheme
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.backgroundColor = UIColor(hex: theme.operationColor)
+            self?.label.textColor = UIColor(hex: theme.operationTitleColor)
+        } completion: { _ in
+            
+        }
+
+    }
+    
+    private func deselectScreen(animated: Bool) {
+        let theme = ThemeManager.shared.currentTheme
+        let duration = animated ? 0.15 : 0
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.backgroundColor = UIColor.clear
+            self?.label.textColor = UIColor(hex: theme.displayColor)
+        } completion: { _ in
+            
+        }
+    }
+    
+    //MARK: - Notifications
+    
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willHideEditMenu(_:)), name: UIMenuController.willHideMenuNotification, object: nil)
+    }
+    
+    private func unregisterNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIMenuController.willHideMenuNotification, object: nil)
+    }
+    
+    @objc private func willHideEditMenu(_ notification: Notification) {
+        deselectScreen(animated: true)
+        unregisterNotifications()
     }
 }

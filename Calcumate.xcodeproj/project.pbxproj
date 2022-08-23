@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0839651928B38C3E00C2E19D /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651828B38C3E00C2E19D /* DisplayView.swift */; };
 		0839651C28B3955700C2E19D /* String+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651B28B3955700C2E19D /* String+Numbers.swift */; };
+		0839651E28B4DDA200C2E19D /* UIButton+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651D28B4DDA200C2E19D /* UIButton+Animations.swift */; };
 		0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0728AD1A2400276538 /* AppDelegate.swift */; };
 		0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0928AD1A2400276538 /* SceneDelegate.swift */; };
 		0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		0839651828B38C3E00C2E19D /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		0839651B28B3955700C2E19D /* String+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numbers.swift"; sourceTree = "<group>"; };
+		0839651D28B4DDA200C2E19D /* UIButton+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Animations.swift"; sourceTree = "<group>"; };
 		0864DA0428AD1A2400276538 /* Calcumate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calcumate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0864DA0728AD1A2400276538 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0864DA0928AD1A2400276538 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA1E28AE2FAF00276538 /* UIColor+HexValue.swift */,
+				0839651D28B4DDA200C2E19D /* UIButton+Animations.swift */,
 			);
 			path = "UIkit Extensions";
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */,
 				0864DA5128B0E6AE00276538 /* ThemeManager.swift in Sources */,
 				0864DA5328B104DF00276538 /* DataStoreManager.swift in Sources */,
+				0839651E28B4DDA200C2E19D /* UIButton+Animations.swift in Sources */,
 				0839651C28B3955700C2E19D /* String+Numbers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
