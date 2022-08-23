@@ -10,6 +10,8 @@
 		0839651928B38C3E00C2E19D /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651828B38C3E00C2E19D /* DisplayView.swift */; };
 		0839651C28B3955700C2E19D /* String+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651B28B3955700C2E19D /* String+Numbers.swift */; };
 		0839651E28B4DDA200C2E19D /* UIButton+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651D28B4DDA200C2E19D /* UIButton+Animations.swift */; };
+		0839652028B50A3A00C2E19D /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839651F28B50A3A00C2E19D /* LogViewController.swift */; };
+		0839652228B50ADA00C2E19D /* EquationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839652128B50ADA00C2E19D /* EquationTableViewCell.swift */; };
 		0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0728AD1A2400276538 /* AppDelegate.swift */; };
 		0864DA0A28AD1A2400276538 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0928AD1A2400276538 /* SceneDelegate.swift */; };
 		0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */; };
@@ -51,6 +53,8 @@
 		0839651828B38C3E00C2E19D /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		0839651B28B3955700C2E19D /* String+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numbers.swift"; sourceTree = "<group>"; };
 		0839651D28B4DDA200C2E19D /* UIButton+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Animations.swift"; sourceTree = "<group>"; };
+		0839651F28B50A3A00C2E19D /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		0839652128B50ADA00C2E19D /* EquationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationTableViewCell.swift; sourceTree = "<group>"; };
 		0864DA0428AD1A2400276538 /* Calcumate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calcumate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0864DA0728AD1A2400276538 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0864DA0928AD1A2400276538 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				0839651828B38C3E00C2E19D /* DisplayView.swift */,
+				0839652128B50ADA00C2E19D /* EquationTableViewCell.swift */,
 			);
 			path = "UIKit Subclasses";
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */,
+				0839651F28B50A3A00C2E19D /* LogViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -361,6 +367,8 @@
 				0864DA1F28AE2FAF00276538 /* UIColor+HexValue.swift in Sources */,
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
+				0839652228B50ADA00C2E19D /* EquationTableViewCell.swift in Sources */,
+				0839652028B50A3A00C2E19D /* LogViewController.swift in Sources */,
 				0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
 				0864DA4C28AFE30C00276538 /* String+Prefix.swift in Sources */,

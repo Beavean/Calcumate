@@ -379,6 +379,35 @@
             </objects>
             <point key="canvasLocation" x="122" y="124"/>
         </scene>
+        <!--Log View Controller-->
+        <scene sceneID="pc1-Jd-mKG">
+            <objects>
+                <tableViewController storyboardIdentifier="LogViewController" id="Rp7-zd-9CW" customClass="LogViewController" customModule="Calcumate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="N5X-em-p7d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EquationTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EquationTableViewCell" rowHeight="171" id="3Ac-Cv-Wdy" customClass="EquationTableViewCell" customModule="Calcumate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="171"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Ac-Cv-Wdy" id="EfH-6W-Tcg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Rp7-zd-9CW" id="5ZN-I5-wVv"/>
+                            <outlet property="delegate" destination="Rp7-zd-9CW" id="CeK-23-bdn"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Duu-dJ-KZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956.52173913043487" y="123.88392857142857"/>
+        </scene>
     </scenes>
     <resources>
         <image name="circle.grid.3x3.circle" catalog="system" width="128" height="121"/>

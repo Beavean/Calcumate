@@ -13,6 +13,16 @@ class DisplayView: UIView {
     
     @IBOutlet var label: UILabel!
     
+    //MARK: - Custom Menu Items
+    
+    private var logMenuItem: UIMenuItem {
+        return UIMenuItem(title: "View Log", action: #selector(self.displayHistoryLog))
+    }
+    
+    @objc private func displayHistoryLog() {
+        NotificationCenter.default.post(name: Notification.Name("Calcumate.DisplayView.displayHistory"), object: nil)
+    }
+    
     // MARK: - Initialisers
     
     override init(frame: CGRect) {
@@ -53,6 +63,7 @@ class DisplayView: UIView {
         selectScreen()
         becomeFirstResponder()
         let menu = UIMenuController.shared
+        menu.menuItems = [logMenuItem]
         guard menu.isMenuVisible == false else { return }
         let locationOfGesture = gestureRecogniser.location(in: self)
         var rect = bounds
@@ -72,7 +83,7 @@ class DisplayView: UIView {
     }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:))
+        return action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(self.displayHistoryLog)
     }
     
     @objc override func copy(_ sender: Any?) {
