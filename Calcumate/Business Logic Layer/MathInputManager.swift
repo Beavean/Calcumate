@@ -34,9 +34,9 @@ struct MathInputManager {
     
     var displayText = ""
     
-    //MARK: - Equation Wrapper
+    //MARK: - Equation operations
     
-    var operation: MathematicalEquation.OperationType? {
+    private var operation: MathematicalEquation.OperationType? {
         get {
             return mathematicalEquation.operation
         }
@@ -45,7 +45,7 @@ struct MathInputManager {
         }
     }
     
-    var leftSide: Decimal {
+    private var leftSide: Decimal {
         get {
             return mathematicalEquation.leftSide
         }
@@ -55,7 +55,7 @@ struct MathInputManager {
         }
     }
     
-    var rightSide: Decimal? {
+    private var rightSide: Decimal? {
         get {
             return mathematicalEquation.rightSide
         }
@@ -64,7 +64,7 @@ struct MathInputManager {
             displayText = formatDisplay(mathematicalEquation.rightSide)
         }
     }
-    var result: Decimal? {
+    private var result: Decimal? {
         get {
             return mathematicalEquation.result
         }
@@ -81,13 +81,13 @@ struct MathInputManager {
     //MARK: - Initialiser
     
     init() {
-        displayText = formatDisplay(mathematicalEquation.leftSide)
+        displayText = formatDisplay(leftSide)
     }
     
     init(byPopulatingCalculationFrom mathInputManager: MathInputManager) {
         leftSide = mathInputManager.result ?? Decimal(0)
-        operation = mathInputManager.mathematicalEquation.operation
-        rightSide = mathInputManager.mathematicalEquation.rightSide
+        operation = mathInputManager.operation
+        rightSide = mathInputManager.rightSide
     }
     
     init(byPopulatingResultFrom mathInputManager: MathInputManager) {
@@ -101,10 +101,10 @@ struct MathInputManager {
         switch operandSide {
         case .leftSide:
             mathematicalEquation.negateLeftSide()
-            addNegateSymbolToDisplay(mathematicalEquation.leftSide)
+            addNegateSymbolToDisplay(leftSide)
         case .rightSide:
             mathematicalEquation.negateRightSide()
-            addNegateSymbolToDisplay(mathematicalEquation.rightSide)
+            addNegateSymbolToDisplay(rightSide)
         }
     }
     
@@ -123,10 +123,10 @@ struct MathInputManager {
         switch operandSide {
         case .leftSide:
             mathematicalEquation.percentageLeftSide()
-            displayText = formatDisplay(mathematicalEquation.leftSide)
+            displayText = formatDisplay(leftSide)
         case .rightSide:
             mathematicalEquation.percentageRightSide()
-            displayText = formatDisplay(mathematicalEquation.rightSide)
+            displayText = formatDisplay(rightSide)
         }
     }
     
@@ -134,32 +134,32 @@ struct MathInputManager {
     
     mutating func addPressed() {
         guard isCompleted == false else { return }
-        mathematicalEquation.operation = .add
+        operation = .add
         startEditingRightSide()
     }
     
     mutating func subtractPressed() {
         guard isCompleted == false else { return }
-        mathematicalEquation.operation = .subtract
+        operation = .subtract
         startEditingRightSide()
     }
     
     mutating func multiplyPressed() {
         guard isCompleted == false else { return }
-        mathematicalEquation.operation = .multiply
+        operation = .multiply
         startEditingRightSide()
     }
     
     mutating func dividePressed() {
         guard isCompleted == false else { return }
-        mathematicalEquation.operation = .divide
+        operation = .divide
         startEditingRightSide()
     }
     
     mutating func execute() {
         guard isCompleted == false else { return }
         mathematicalEquation.execute()
-        displayText = formatDisplay(mathematicalEquation.result)
+        displayText = formatDisplay(result)
     }
     
     //MARK: - Editing Right Side
@@ -183,16 +183,16 @@ struct MathInputManager {
         return string.appending(decimalSymbol)
     }
     
-    mutating func numberPressed(_ number: Int) {
-        guard number >= -9, number <= 9 else { return }
+    mutating func pinPadPressed(_ number: Int) {
+        guard number >= 0, number <= 9 else { return }
         switch operandSide {
         case .leftSide:
-            let tuple = appendNewNumber(number, previousInput: mathematicalEquation.leftSide)
-            mathematicalEquation.leftSide = tuple.number
+            let tuple = appendNewNumber(number, previousInput: leftSide)
+            leftSide = tuple.number
             displayText = tuple.displayText
         case .rightSide:
-            let tuple = appendNewNumber(number, previousInput: mathematicalEquation.rightSide ?? .zero)
-            mathematicalEquation.rightSide = tuple.number
+            let tuple = appendNewNumber(number, previousInput: rightSide ?? .zero)
+            rightSide = tuple.number
             displayText = tuple.displayText
         }
     }
@@ -240,7 +240,7 @@ struct MathInputManager {
         guard mathematicalEquation.executed == false else {
             return false
         }
-        if let _ = mathematicalEquation.operation, let _ = mathematicalEquation.rightSide {
+        if let _ = operation, let _ = rightSide {
             return true
         }
         return false
@@ -251,9 +251,9 @@ struct MathInputManager {
     mutating func pasteIn(_ decimal: Decimal) {
         switch operandSide {
         case .leftSide:
-            mathematicalEquation.leftSide = decimal
+            leftSide = decimal
         case .rightSide:
-            mathematicalEquation.rightSide = decimal
+            rightSide = decimal
         }
         displayText = formatDisplay(decimal)
     }

@@ -30,58 +30,34 @@ struct CalculatorEngine {
     }
     
     mutating func negatePressed() {
-        guard inputManager.isCompleted == false else { return }
+        populateFromResultIfNeeded()
         inputManager.negatePressed()
     }
     
     mutating func percentagePressed() {
-        guard inputManager.isCompleted == false else { return }
+        populateFromResultIfNeeded()
         inputManager.percentagePressed()
     }
-
+    
     // MARK: - Operations
     
     mutating func addPressed() {
-        if inputManager.isReadyToExecute {
-            executeMathInputController()
-            populateFromResult()
-        }
-        if inputManager.isCompleted {
-            populateFromResult()
-        }
+        executeAndPopulateFromResult()
         inputManager.addPressed()
     }
     
     mutating func subtractPressed() {
-        if inputManager.isReadyToExecute {
-            executeMathInputController()
-            populateFromResult()
-        }
-        if inputManager.isCompleted {
-            populateFromResult()
-        }
+        executeAndPopulateFromResult()
         inputManager.subtractPressed()
     }
     
     mutating func multiplyPressed() {
-        if inputManager.isReadyToExecute {
-            executeMathInputController()
-            populateFromResult()
-        }
-        if inputManager.isCompleted {
-            populateFromResult()
-        }
+        executeAndPopulateFromResult()
         inputManager.multiplyPressed()
     }
     
     mutating func dividePressed() {
-        if inputManager.isReadyToExecute {
-            executeMathInputController()
-            populateFromResult()
-        }
-        if inputManager.isCompleted {
-            populateFromResult()
-        }
+        executeAndPopulateFromResult()
         inputManager.dividePressed()
     }
     
@@ -102,14 +78,18 @@ struct CalculatorEngine {
     // MARK: - Number Input
     
     mutating func decimalPressed() {
-        inputManager.decimalPressed()
-    }
-    
-    mutating func numberPressed(_ number: Int) {
         if inputManager.isCompleted {
             inputManager = MathInputManager()
         }
-        inputManager.numberPressed(number)
+        inputManager.decimalPressed()
+    }
+    
+    mutating func pinPadPressed(_ number: Int) {
+        guard number >= 0, number <= 9 else { return }
+        if inputManager.isCompleted {
+            inputManager = MathInputManager()
+        }
+        inputManager.pinPadPressed(number)
     }
     
     //MARK: - Populate new math input controller
@@ -118,6 +98,19 @@ struct CalculatorEngine {
         inputManager = MathInputManager(byPopulatingResultFrom: inputManager)
     }
     
+    mutating private func populateFromResultIfNeeded() {
+        if inputManager.isCompleted {
+            populateFromResult()
+        }
+    }
+    
+    mutating private func executeAndPopulateFromResult() {
+        if inputManager.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
+        populateFromResultIfNeeded()
+    }
     
     //MARK: - Console
     

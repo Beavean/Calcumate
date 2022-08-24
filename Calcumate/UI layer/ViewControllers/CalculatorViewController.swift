@@ -226,7 +226,7 @@ class CalculatorViewController: UIViewController {
         sender.bounce()
         deselectOperationButton()
         let number = sender.tag
-        calculatorEngine.numberPressed(number)
+        calculatorEngine.pinPadPressed(number)
         refreshDisplay()
     }
     
