@@ -36,6 +36,15 @@ struct MathInputManager {
     
     //MARK: - Equation Wrapper
     
+    var operation: MathematicalEquation.OperationType? {
+        get {
+            return mathematicalEquation.operation
+        }
+        set {
+            mathematicalEquation.operation = newValue
+        }
+    }
+    
     var leftSide: Decimal {
         get {
             return mathematicalEquation.leftSide
@@ -75,7 +84,13 @@ struct MathInputManager {
         displayText = formatDisplay(mathematicalEquation.leftSide)
     }
     
-    init(from mathInputManager: MathInputManager) {
+    init(byPopulatingCalculationFrom mathInputManager: MathInputManager) {
+        leftSide = mathInputManager.result ?? Decimal(0)
+        operation = mathInputManager.mathematicalEquation.operation
+        rightSide = mathInputManager.mathematicalEquation.rightSide
+    }
+    
+    init(byPopulatingResultFrom mathInputManager: MathInputManager) {
         leftSide = mathInputManager.result ?? Decimal(0)
     }
     
@@ -219,6 +234,16 @@ struct MathInputManager {
     
     var isCompleted: Bool {
         return mathematicalEquation.executed
+    }
+    
+    var isReadyToExecute: Bool {
+        guard mathematicalEquation.executed == false else {
+            return false
+        }
+        if let _ = mathematicalEquation.operation, let _ = mathematicalEquation.rightSide {
+            return true
+        }
+        return false
     }
     
     //MARK: - Copy & Paste

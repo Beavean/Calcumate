@@ -42,6 +42,10 @@ struct CalculatorEngine {
     // MARK: - Operations
     
     mutating func addPressed() {
+        if inputManager.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
         if inputManager.isCompleted {
             populateFromResult()
         }
@@ -49,6 +53,10 @@ struct CalculatorEngine {
     }
     
     mutating func subtractPressed() {
+        if inputManager.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
         if inputManager.isCompleted {
             populateFromResult()
         }
@@ -56,6 +64,10 @@ struct CalculatorEngine {
     }
     
     mutating func multiplyPressed() {
+        if inputManager.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
         if inputManager.isCompleted {
             populateFromResult()
         }
@@ -63,6 +75,10 @@ struct CalculatorEngine {
     }
     
     mutating func dividePressed() {
+        if inputManager.isReadyToExecute {
+            executeMathInputController()
+            populateFromResult()
+        }
         if inputManager.isCompleted {
             populateFromResult()
         }
@@ -70,7 +86,14 @@ struct CalculatorEngine {
     }
     
     mutating func equalsPressed() {
-        guard inputManager.isCompleted == false else { return }
+        if inputManager.isCompleted {
+            inputManager = MathInputManager(byPopulatingCalculationFrom: inputManager)
+        }
+        guard inputManager.isReadyToExecute else { return }
+        executeMathInputController()
+    }
+    
+    private mutating func executeMathInputController() {
         inputManager.execute()
         historyLog.append(inputManager.mathematicalEquation)
         printEquationToConsole()
@@ -92,7 +115,7 @@ struct CalculatorEngine {
     //MARK: - Populate new math input controller
     
     private mutating func populateFromResult() {
-        inputManager = MathInputManager(from: inputManager)
+        inputManager = MathInputManager(byPopulatingResultFrom: inputManager)
     }
     
     
