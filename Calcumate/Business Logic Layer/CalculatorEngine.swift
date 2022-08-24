@@ -38,26 +38,34 @@ struct CalculatorEngine {
         guard inputManager.isCompleted == false else { return }
         inputManager.percentagePressed()
     }
-    
+
     // MARK: - Operations
     
     mutating func addPressed() {
-        guard inputManager.isCompleted == false else { return }
+        if inputManager.isCompleted {
+            populateFromResult()
+        }
         inputManager.addPressed()
     }
     
     mutating func subtractPressed() {
-        guard inputManager.isCompleted == false else { return }
+        if inputManager.isCompleted {
+            populateFromResult()
+        }
         inputManager.subtractPressed()
     }
     
     mutating func multiplyPressed() {
-        guard inputManager.isCompleted == false else { return }
+        if inputManager.isCompleted {
+            populateFromResult()
+        }
         inputManager.multiplyPressed()
     }
     
     mutating func dividePressed() {
-        guard inputManager.isCompleted == false else { return }
+        if inputManager.isCompleted {
+            populateFromResult()
+        }
         inputManager.dividePressed()
     }
     
@@ -75,13 +83,23 @@ struct CalculatorEngine {
     }
     
     mutating func numberPressed(_ number: Int) {
+        if inputManager.isCompleted {
+            inputManager = MathInputManager()
+        }
         inputManager.numberPressed(number)
     }
+    
+    //MARK: - Populate new math input controller
+    
+    private mutating func populateFromResult() {
+        inputManager = MathInputManager(from: inputManager)
+    }
+    
     
     //MARK: - Console
     
     private func printEquationToConsole() {
-        print("Equation: " + inputManager.mathematicalEquation.generatePrintout())
+        print("Equation: " + inputManager.generatePrintout())
     }
     
     //MARK: - History Log

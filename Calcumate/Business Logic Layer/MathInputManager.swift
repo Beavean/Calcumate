@@ -34,10 +34,49 @@ struct MathInputManager {
     
     var displayText = ""
     
+    //MARK: - Equation Wrapper
+    
+    var leftSide: Decimal {
+        get {
+            return mathematicalEquation.leftSide
+        }
+        set {
+            mathematicalEquation.leftSide = newValue
+            displayText = formatDisplay(mathematicalEquation.leftSide)
+        }
+    }
+    
+    var rightSide: Decimal? {
+        get {
+            return mathematicalEquation.rightSide
+        }
+        set {
+            mathematicalEquation.rightSide = newValue
+            displayText = formatDisplay(mathematicalEquation.rightSide)
+        }
+    }
+    var result: Decimal? {
+        get {
+            return mathematicalEquation.result
+        }
+        set {
+            mathematicalEquation.result = newValue
+            displayText = formatDisplay(mathematicalEquation.result)
+        }
+    }
+    
+    func generatePrintout() -> String {
+        return mathematicalEquation.generatePrintout()
+    }
+    
     //MARK: - Initialiser
     
     init() {
         displayText = formatDisplay(mathematicalEquation.leftSide)
+    }
+    
+    init(from mathInputManager: MathInputManager) {
+        leftSide = mathInputManager.result ?? Decimal(0)
     }
     
     //MARK: - Extra Functions
