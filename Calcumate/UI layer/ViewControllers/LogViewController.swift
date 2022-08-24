@@ -56,10 +56,19 @@ class LogViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? EquationTableViewCell else { return }
         let equation = datasource[indexPath.row]
         let userInfo: [AnyHashable: Any] = ["PasteKey" : equation]
         NotificationCenter.default.post(name: NSNotification.Name("Calcumate.LogView.pasteMathEquation"), object: nil, userInfo: userInfo)
-        dismiss(animated: true)
+        tableView.isUserInteractionEnabled = false
+        cell.displayTick()
+        dismissAfterDelay()
+    }
+    
+    private func dismissAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
     
     //MARK: - Decorate
@@ -74,6 +83,7 @@ class LogViewController: UITableViewController {
         cell.resultLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
         cell.leftSideLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
         cell.rightSideLabel.highlightedTextColor = UIColor(hex: theme.backgroundColor)
+        cell.tickView.tintColor = UIColor(hex: theme.operationTitleColor)
     }
     
     private func decorateView() {
