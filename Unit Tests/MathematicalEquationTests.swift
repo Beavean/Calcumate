@@ -16,7 +16,6 @@ class MathematicalEquationTests: XCTestCase {
         mathEquation.operation = .add
         mathEquation.rightSide = 4
         mathEquation.execute()
-        
         let expectedResult = Decimal(8)
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
@@ -27,7 +26,6 @@ class MathematicalEquationTests: XCTestCase {
         mathEquation.operation = .subtract
         mathEquation.rightSide = 4
         mathEquation.execute()
-        
         let expectedResult = Decimal.zero
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
@@ -38,7 +36,6 @@ class MathematicalEquationTests: XCTestCase {
         mathEquation.operation = .multiply
         mathEquation.rightSide = 4
         mathEquation.execute()
-        
         let expectedResult = Decimal(16)
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
@@ -49,7 +46,6 @@ class MathematicalEquationTests: XCTestCase {
         mathEquation.operation = .divide
         mathEquation.rightSide = 4
         mathEquation.execute()
-        
         let expectedResult = Decimal(1)
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
