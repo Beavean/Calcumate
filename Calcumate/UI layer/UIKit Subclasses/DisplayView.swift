@@ -20,7 +20,7 @@ class DisplayView: UIView {
     }
     
     @objc private func displayHistoryLog() {
-        NotificationCenter.default.post(name: Notification.Name("Calcumate.DisplayView.displayHistory"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(DisplayView.Names.historyLogNotification), object: nil)
     }
     
     // MARK: - Initialisers
@@ -92,8 +92,8 @@ class DisplayView: UIView {
     
     override func paste(_ sender: Any?) {
         guard let pasteNumber = UIPasteboard.general.string?.doubleValue else { return }
-        let userInfo: [AnyHashable: Any] = ["PasteKey": pasteNumber]
-        NotificationCenter.default.post(name: Notification.Name("Calcumate.DisplayView.pasteNumber"), object: nil, userInfo: userInfo)
+        let userInfo: [AnyHashable: Any] = [DisplayView.Names.pasteNumberKey: pasteNumber]
+        NotificationCenter.default.post(name: Notification.Name(DisplayView.Names.pasteNumberNotification), object: nil, userInfo: userInfo)
     }
     
     //MARK: - Color Themes methods

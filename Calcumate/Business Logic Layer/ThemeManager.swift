@@ -15,7 +15,7 @@ class ThemeManager {
     
     //MARK: - Data Storage
     
-    private var dataStore = DataStoreManager(key: "Calcumate.ThemeManager.ThemeIndex")
+    private var dataStore = DataStoreManager(key: ThemeManager.Names.dataStoreThemeIndex)
     
     //MARK: - Themes
     

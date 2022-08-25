@@ -58,8 +58,8 @@ class LogViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? EquationTableViewCell else { return }
         let equation = datasource[indexPath.row]
-        let userInfo: [AnyHashable: Any] = ["PasteKey" : equation]
-        NotificationCenter.default.post(name: NSNotification.Name("Calcumate.LogView.pasteMathEquation"), object: nil, userInfo: userInfo)
+        let userInfo: [AnyHashable: Any] = [LogViewController.Names.pasteNumberKey : equation]
+        NotificationCenter.default.post(name: NSNotification.Name(LogViewController.Names.pasteEquationNotification), object: nil, userInfo: userInfo)
         tableView.isUserInteractionEnabled = false
         cell.displayTick()
         dismissAfterDelay()
