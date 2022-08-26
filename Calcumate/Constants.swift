@@ -55,3 +55,10 @@ extension ThemeManager {
     }
 }
 
+//MARK: - Calculator Engine
+
+extension CalculatorEngine {
+    struct Names {
+        static let dataStore = "Calcumate.CalculatorEngine.PreviousResult"
+    }
+}

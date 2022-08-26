@@ -53,6 +53,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         redecorateView()
         registerForNotifications()
+        refreshDisplay()
     }
     
     //MARK: - Theme Button actions

@@ -55,7 +55,6 @@ class ThemeManager {
         if let encodedTheme = try? encoder.encode(theme) {
             dataStore.set(encodedTheme)
         }
-        
     }
     
     //MARK: - Next Theme

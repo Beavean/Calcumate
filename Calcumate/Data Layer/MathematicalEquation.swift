@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct MathematicalEquation {
+struct MathematicalEquation: Codable {
     
-    enum OperationType {
+    enum OperationType: Codable {
         case add
         case subtract
         case multiply

@@ -17,16 +17,25 @@ struct CalculatorEngine {
     
     private(set) var historyLog: [MathematicalEquation] = []
     
+    private var dataStore = DataStoreManager(key: CalculatorEngine.Names.dataStore)
+    
     //MARK: - Display
     
     var displayText: String {
         return inputManager.displayText
     }
     
+    //MARK: - Initialise
+    
+    init() {
+        restoreFromLastSession()
+    }
+    
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
         inputManager = MathInputManager()
+        deletePreviousSession()
     }
     
     mutating func negatePressed() {
@@ -73,6 +82,7 @@ struct CalculatorEngine {
         inputManager.execute()
         historyLog.append(inputManager.mathematicalEquation)
         printEquationToConsole()
+        saveSession()
     }
     
     // MARK: - Number Input
@@ -138,4 +148,37 @@ struct CalculatorEngine {
         inputManager = MathInputManager()
         pasteInNumber(from: result)
     }
+    
+    //MARK: - Restoring Session
+    
+    private func deletePreviousSession() {
+        dataStore.deleteValue()
+    }
+    
+    private func saveSession() {
+        guard isMathInputControllerSafeToBeSaved() else {
+            deletePreviousSession()
+            return
+        }
+        let mathEquation = inputManager.mathematicalEquation
+        let encoder = JSONEncoder()
+        if let encodedEquation = try? encoder.encode(mathEquation) {
+            dataStore.set(encodedEquation)
+        }
+    }
+    
+    private mutating func restoreFromLastSession() {
+        guard let encodedEquation = dataStore.getValue() as? Data else {
+            return
+        }
+        let decoder = JSONDecoder()
+        if let previousEquation = try? decoder.decode(MathematicalEquation.self, from: encodedEquation) {
+            inputManager = MathInputManager(byRestoringFrom: previousEquation)
+        }
+    }
+    
+    private func isMathInputControllerSafeToBeSaved() -> Bool {
+        return !inputManager.containsNotNumbers
+    }
+    
 }

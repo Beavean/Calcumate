@@ -93,6 +93,13 @@ struct MathInputManager {
     init(byPopulatingResultFrom mathInputManager: MathInputManager) {
         leftSide = mathInputManager.result ?? Decimal(0)
     }
+        
+    init(byRestoringFrom equation: MathematicalEquation) {
+        leftSide = equation.leftSide
+        operation = equation.operation
+        rightSide = equation.rightSide
+        result = equation.result
+    }
     
     //MARK: - Extra Functions
     
@@ -244,6 +251,10 @@ struct MathInputManager {
             return true
         }
         return false
+    }
+    
+    var containsNotNumbers: Bool {
+        return leftSide.isNaN || rightSide?.isNaN ?? false || result?.isNaN ?? false
     }
     
     //MARK: - Copy & Paste
