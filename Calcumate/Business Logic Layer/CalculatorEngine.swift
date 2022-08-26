@@ -25,12 +25,6 @@ struct CalculatorEngine {
         return inputManager.displayText
     }
     
-    //MARK: - Initialise
-    
-    init() {
-        restoreFromLastSession()
-    }
-    
     // MARK: - Extra Functions
     
     mutating func clearPressed() {
@@ -167,14 +161,15 @@ struct CalculatorEngine {
         }
     }
     
-    private mutating func restoreFromLastSession() {
+    mutating func restoreFromLastSession() -> Bool {
         guard let encodedEquation = dataStore.getValue() as? Data else {
-            return
+            return false
         }
         let decoder = JSONDecoder()
         if let previousEquation = try? decoder.decode(MathematicalEquation.self, from: encodedEquation) {
             inputManager = MathInputManager(byRestoringFrom: previousEquation)
         }
+        return true
     }
     
     private func isMathInputControllerSafeToBeSaved() -> Bool {

@@ -36,6 +36,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
+    var needToDisplayWelcomeAnimations = true
+    
     //MARK: - Color themes
     
     private var currentTheme: CalculatorTheme {
@@ -53,7 +55,46 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         redecorateView()
         registerForNotifications()
+        prepareForWelcomeAnimations()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if needToDisplayWelcomeAnimations {
+            needToDisplayWelcomeAnimations = false
+            displayWelcomeAnimations()
+        }
+    }
+    
+    private func prepareForWelcomeAnimations() {
+        displayView.alpha = 0
+    }
+    
+    private func displayWelcomeAnimations() {
+        let didRestoreFromLastSession = calculatorEngine.restoreFromLastSession()
         refreshDisplay()
+        let timeDelay: TimeInterval = 0.25
+        if didRestoreFromLastSession {
+            self.slideInDisplay(withDelay: timeDelay)
+        } else {
+            self.fadeDisplay(withDelay: timeDelay)
+        }
+    }
+    
+    private func fadeDisplay(withDelay delay: TimeInterval) {
+        UIView.animate(withDuration: 0.5, delay: delay, options: .curveEaseOut) { [weak self] in
+            self?.displayView.alpha = 1
+        } completion: { _ in
+        }
+    }
+    
+    private func slideInDisplay(withDelay delay: TimeInterval) {
+        displayView.transform = CGAffineTransform(translationX: 0, y: displayView.frame.height)
+        UIView.animate(withDuration: 0.25, delay: delay, options: .curveEaseOut) { [weak self] in
+            self?.displayView.alpha = 1
+            self?.displayView.transform = CGAffineTransform.identity
+        } completion: { _ in
+        }
     }
     
     //MARK: - Theme Button actions
@@ -122,7 +163,7 @@ class CalculatorViewController: UIViewController {
         button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         if button.isSelected {
-        selectOperationButton(button, true)
+            selectOperationButton(button, true)
         }
     }
     

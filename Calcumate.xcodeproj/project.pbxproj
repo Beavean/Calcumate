@@ -42,6 +42,7 @@
 		08E8716928B7B692000B6DCD /* CalculatorEngineDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */; };
 		08E8716B28B7B9B7000B6DCD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716A28B7B9B7000B6DCD /* Constants.swift */; };
 		08E8719628B7C9FC000B6DCD /* Array+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */; };
+		08E8719828B8DE3D000B6DCD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8719728B8DE3D000B6DCD /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngineDecimalTests.swift; sourceTree = "<group>"; };
 		08E8716A28B7B9B7000B6DCD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAccess.swift"; sourceTree = "<group>"; };
+		08E8719728B8DE3D000B6DCD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */,
+				08E8719728B8DE3D000B6DCD /* File.swift */,
 				0839651F28B50A3A00C2E19D /* LogViewController.swift */,
 			);
 			path = ViewControllers;
@@ -228,9 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				0864DA2028AE312D00276538 /* CalculatorTheme.swift */,
-				0864DA4E28B02B1700276538 /* ColorThemes.swift */,
 				0864DA2228AE3B3200276538 /* MathematicalEquation.swift */,
 				0864DA5228B104DF00276538 /* DataStoreManager.swift */,
+				0864DA4E28B02B1700276538 /* ColorThemes.swift */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
 				0839652228B50ADA00C2E19D /* EquationTableViewCell.swift in Sources */,
+				08E8719828B8DE3D000B6DCD /* File.swift in Sources */,
 				0839652028B50A3A00C2E19D /* LogViewController.swift in Sources */,
 				0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
@@ -545,6 +549,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -574,6 +579,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;

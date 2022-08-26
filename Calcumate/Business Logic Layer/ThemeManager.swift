@@ -35,7 +35,7 @@ class ThemeManager {
     }
     
     private func createArrayOfThemes() {
-        themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme]
+        themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme, bumbleBeeTheme, futuristicTheme, lipStickTheme, strangeTheme, peachTheme, pinkDotsTheme]
     }
     
     //MARK: - Save & Restore

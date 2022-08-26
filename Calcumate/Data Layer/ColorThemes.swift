@@ -158,4 +158,94 @@ extension ThemeManager {
                                pinPadTitleColor:"#FFFFFF",
                                statusBarStyle: .dark)
     }
+    
+    var bumbleBeeTheme: CalculatorTheme {
+        return CalculatorTheme(id: "11",
+                               backgroundColor: "#1C1C1C",
+                               displayColor: "#FFC500",
+                               extraFunctionColor: "#333333",
+                               extraFunctionTitleColor: "#D6D5D4",
+                               operationColor: "#FFC500",
+                               operationTitleColor: "#1C1C1C",
+                               operationSelectedColor: "#333333",
+                               operationTitleSelectedColor: "#D6D5D4",
+                               pinPadColor: "#333333",
+                               pinPadTitleColor: "#D6D5D4",
+                               statusBarStyle: .light)
+    }
+    
+    var futuristicTheme: CalculatorTheme {
+        return CalculatorTheme(id: "12",
+                               backgroundColor: "#054F61",
+                               displayColor: "#E9F2FB",
+                               extraFunctionColor: "#003748",
+                               extraFunctionTitleColor: "#E9F2FB",
+                               operationColor: "#20C1F2",
+                               operationTitleColor: "#E9F2FB",
+                               operationSelectedColor: "#F240EE",
+                               operationTitleSelectedColor: "#E9F2FB",
+                               pinPadColor: "#333333",
+                               pinPadTitleColor: "#E9F2FB",
+                               statusBarStyle: .light)
+    }
+    
+    var lipStickTheme: CalculatorTheme {
+        return CalculatorTheme(id: "13",
+                               backgroundColor: "#FE3787",
+                               displayColor: "#FFFFFF",
+                               extraFunctionColor: "#F7F7F7",
+                               extraFunctionTitleColor: "#454545",
+                               operationColor: "#20C1F2",
+                               operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#F7F7F7",
+                               operationTitleSelectedColor: "#FE3787",
+                               pinPadColor: "#FFFFFF",
+                               pinPadTitleColor: "#FE3787",
+                               statusBarStyle: .light)
+    }
+    
+    var strangeTheme: CalculatorTheme {
+        return CalculatorTheme(id: "14",
+                               backgroundColor: "#333333",
+                               displayColor: "#FFFFFF",
+                               extraFunctionColor: "#333333",
+                               extraFunctionTitleColor: "#FF9933",
+                               operationColor: "#333333",
+                               operationTitleColor: "#FF9933",
+                               operationSelectedColor: "#FFFFFF",
+                               operationTitleSelectedColor: "#333333",
+                               pinPadColor: "#333333",
+                               pinPadTitleColor: "#FFFFFF",
+                               statusBarStyle: .light)
+    }
+    
+    var peachTheme: CalculatorTheme {
+        return CalculatorTheme(id: "15",
+                               backgroundColor: "#FFAB97",
+                               displayColor: "#FFF7EA",
+                               extraFunctionColor: "#F99582",
+                               extraFunctionTitleColor: "#FFF7EA",
+                               operationColor: "#F99582",
+                               operationTitleColor: "#FFF7EA",
+                               operationSelectedColor: "#B7442A",
+                               operationTitleSelectedColor: "#FFF7EA",
+                               pinPadColor: "#FF8368",
+                               pinPadTitleColor: "#FFF7EA",
+                               statusBarStyle: .light)
+    }
+    
+    var pinkDotsTheme: CalculatorTheme {
+        return CalculatorTheme(id: "16",
+                               backgroundColor: "#FFFFFF",
+                               displayColor: "#FF3797",
+                               extraFunctionColor: "#F7F7F7",
+                               extraFunctionTitleColor: "#0F0F0F",
+                               operationColor: "#FF3797",
+                               operationTitleColor: "#FFFFFF",
+                               operationSelectedColor: "#F7F7F7",
+                               operationTitleSelectedColor: "#FF3797",
+                               pinPadColor: "#F7F7F7",
+                               pinPadTitleColor: "#0F0F0F",
+                               statusBarStyle: .light)
+    }
 }
