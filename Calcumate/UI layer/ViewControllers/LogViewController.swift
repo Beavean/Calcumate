@@ -41,8 +41,7 @@ class LogViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquationTableViewCell", for: indexPath) as? EquationTableViewCell else { return UITableViewCell() }
-        let equation = datasource[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquationTableViewCell", for: indexPath) as? EquationTableViewCell, let equation = datasource[safe: indexPath.row] else { return UITableViewCell() }
         cell.leftSideLabel.text = equation.leftSide.formatted()
         cell.rightSideLabel.text = equation.generateStringFromOperation() + " " + (equation.rightSide?.formatted() ?? "")
         cell.resultLabel.text = "= " + (equation.result?.formatted() ?? "")
@@ -56,8 +55,7 @@ class LogViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? EquationTableViewCell else { return }
-        let equation = datasource[indexPath.row]
+        guard let cell = tableView.cellForRow(at: indexPath) as? EquationTableViewCell, let equation = datasource[safe: indexPath.row] else { return }
         let userInfo: [AnyHashable: Any] = [LogViewController.Names.pasteNumberKey : equation]
         NotificationCenter.default.post(name: NSNotification.Name(LogViewController.Names.pasteEquationNotification), object: nil, userInfo: userInfo)
         tableView.isUserInteractionEnabled = false

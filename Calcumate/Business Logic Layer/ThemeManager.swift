@@ -75,7 +75,7 @@ class ThemeManager {
         if newThemeIndex > themes.count - 1 {
             newThemeIndex = 0
         }
-        let theme = themes[newThemeIndex]
+        guard let theme = themes[safe: newThemeIndex] else { return }
         savedTheme = theme
         saveTheme(theme)
     }

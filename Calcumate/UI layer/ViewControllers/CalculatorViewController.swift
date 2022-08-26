@@ -120,6 +120,9 @@ class CalculatorViewController: UIViewController {
         button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
         button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        if button.isSelected {
+        selectOperationButton(button, true)
+        }
     }
     
     private func decorateOperationButton(_ button: UIButton) {
