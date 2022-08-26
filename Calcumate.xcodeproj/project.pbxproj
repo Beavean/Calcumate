@@ -41,6 +41,7 @@
 		08E8716728B7B4EC000B6DCD /* CalculatorEnginePinPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716628B7B4EC000B6DCD /* CalculatorEnginePinPadTests.swift */; };
 		08E8716928B7B692000B6DCD /* CalculatorEngineDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */; };
 		08E8716B28B7B9B7000B6DCD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716A28B7B9B7000B6DCD /* Constants.swift */; };
+		08E8719628B7C9FC000B6DCD /* Array+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		08E8716628B7B4EC000B6DCD /* CalculatorEnginePinPadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEnginePinPadTests.swift; sourceTree = "<group>"; };
 		08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngineDecimalTests.swift; sourceTree = "<group>"; };
 		08E8716A28B7B9B7000B6DCD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAccess.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				0864DA4B28AFE30C00276538 /* String+Prefix.swift */,
+				08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */,
 				0839651B28B3955700C2E19D /* String+Numbers.swift */,
 			);
 			path = "Swift Extensions";
@@ -343,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08E8719628B7C9FC000B6DCD /* Array+SafeAccess.swift in Sources */,
 				0864DA1F28AE2FAF00276538 /* UIColor+HexValue.swift in Sources */,
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
