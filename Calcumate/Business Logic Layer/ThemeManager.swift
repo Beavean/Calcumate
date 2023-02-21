@@ -7,18 +7,17 @@
 
 import Foundation
 
-class ThemeManager {
-    
-    //MARK: - Singleton
-    
+final class ThemeManager {
+    // MARK: - Singleton
+
     static let shared = ThemeManager()
-    
-    //MARK: - Data Storage
-    
+
+    // MARK: - Data Storage
+
     private var dataStore = DataStoreManager(key: ThemeManager.Names.dataStoreThemeIndex)
-    
-    //MARK: - Themes
-    
+
+    // MARK: - Themes
+
     private var savedThemeIndex = 0
     private(set) var themes: [CalculatorTheme] = []
     private var savedTheme: CalculatorTheme?
@@ -26,20 +25,35 @@ class ThemeManager {
         guard let savedTheme = savedTheme else { return themes.first ?? darkTheme }
         return savedTheme
     }
-    
-    //MARK: - Lifecycle
-    
+
+    // MARK: - Lifecycle
+
     init() {
         createArrayOfThemes()
         restoreSavedTheme()
     }
-    
+
     private func createArrayOfThemes() {
-        themes = [darkTheme, purpleTheme, bloodOrangeTheme, darkBlueTheme, electroTheme, lightBlueTheme, lightTheme, orangeTheme, pinkTheme, washedOutTheme, bumbleBeeTheme, futuristicTheme, lipStickTheme, strangeTheme, peachTheme, pinkDotsTheme]
+        themes = [darkTheme,
+                  purpleTheme,
+                  bloodOrangeTheme,
+                  darkBlueTheme,
+                  electroTheme,
+                  lightBlueTheme,
+                  lightTheme,
+                  orangeTheme,
+                  pinkTheme,
+                  washedOutTheme,
+                  bumbleBeeTheme,
+                  futuristicTheme,
+                  lipStickTheme,
+                  strangeTheme,
+                  peachTheme,
+                  pinkDotsTheme]
     }
-    
-    //MARK: - Save & Restore
-    
+
+    // MARK: - Save & Restore
+
     private func restoreSavedTheme() {
         guard let encodedTheme = dataStore.getValue() as? Data else {
             return
@@ -49,16 +63,16 @@ class ThemeManager {
             savedTheme = previousTheme
         }
     }
-    
+
     private func saveTheme(_ theme: CalculatorTheme) {
         let encoder = JSONEncoder()
         if let encodedTheme = try? encoder.encode(theme) {
             dataStore.set(encodedTheme)
         }
     }
-    
-    //MARK: - Next Theme
-    
+
+    // MARK: - Next Theme
+
     func moveToNextTheme() {
         let currentThemeID = currentTheme.id
         let index = themes.firstIndex { calculatorTheme in
@@ -78,7 +92,7 @@ class ThemeManager {
         savedTheme = theme
         saveTheme(theme)
     }
-    
+
     private func updateSystemWithTheme(_ theme: CalculatorTheme) {
         savedTheme = theme
         saveTheme(theme)

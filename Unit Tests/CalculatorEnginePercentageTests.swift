@@ -5,16 +5,15 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEnginePercentageTests: XCTestCase {
-
+final class CalculatorEnginePercentageTests: XCTestCase {
     // MARK: - Addition
-    
-    func testLHSPercentageWithAddition() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSPercentageWithAddition() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.percentagePressed()
@@ -26,10 +25,10 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSPercentageWithAddition() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSPercentageWithAddition() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.addPressed()
@@ -43,10 +42,10 @@ class CalculatorEnginePercentageTests: XCTestCase {
     }
 
     // MARK: - Subtraction
-    
-    func testLHSPercentageWithSubtraction() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSPercentageWithSubtraction() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.percentagePressed()
@@ -58,10 +57,10 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSPercentageWithSubtraction() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSPercentageWithSubtraction() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.subtractPressed()
@@ -73,12 +72,12 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
+
     // MARK: - Multiplication
-    
-    func testLHSPercentageWithMultiplication() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSPercentageWithMultiplication() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.percentagePressed()
@@ -90,10 +89,10 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSPercentageWithMultiplication() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSPercentageWithMultiplication() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.multiplyPressed()
@@ -105,12 +104,12 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
+
     // MARK: - Division
-    
-    func testLHSPercentageWithDivision() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testLHSPercentageWithDivision() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.percentagePressed()
@@ -122,10 +121,10 @@ class CalculatorEnginePercentageTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSPercentageWithDivision() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testRHSPercentageWithDivision() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()

@@ -5,16 +5,15 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEngineNegateTests: XCTestCase {
-
+final class CalculatorEngineNegateTests: XCTestCase {
     // MARK: - Addition
-    
-    func testLHSNegateWithAddition() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSNegateWithAddition() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.negatePressed()
@@ -26,10 +25,10 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSNegateWithAddition() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSNegateWithAddition() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.addPressed()
@@ -43,10 +42,10 @@ class CalculatorEngineNegateTests: XCTestCase {
     }
 
     // MARK: - Subtraction
-    
-    func testLHSNegateWithSubtraction() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSNegateWithSubtraction() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.negatePressed()
@@ -58,10 +57,10 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSNegateWithSubtraction() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSNegateWithSubtraction() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.subtractPressed()
@@ -73,13 +72,12 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
+
     // MARK: - Multiplication
-    
-    func testLHSNegateWithMultiplication() throws {
-        
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testLHSNegateWithMultiplication() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.negatePressed()
@@ -91,10 +89,10 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSNegateWithMultiplication() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 0...9 {
+
+    func testRHSNegateWithMultiplication() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.multiplyPressed()
@@ -106,12 +104,12 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
+
     // MARK: - Division
-    
-    func testLHSNegateWithDivision() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testLHSNegateWithDivision() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.negatePressed()
@@ -123,10 +121,10 @@ class CalculatorEngineNegateTests: XCTestCase {
             }
         }
     }
-    
-    func testRHSNegateWithDivision() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testRHSNegateWithDivision() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()
@@ -139,4 +137,3 @@ class CalculatorEngineNegateTests: XCTestCase {
         }
     }
 }
-

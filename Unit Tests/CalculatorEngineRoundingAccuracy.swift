@@ -5,13 +5,13 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEngineRoundingAccuracy: XCTestCase {
-    func testRoundingAccuracy() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+final class CalculatorEngineRoundingAccuracy: XCTestCase {
+    func testRoundingAccuracy() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()
@@ -26,4 +26,3 @@ class CalculatorEngineRoundingAccuracy: XCTestCase {
         }
     }
 }
-

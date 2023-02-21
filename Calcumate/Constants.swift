@@ -8,57 +8,55 @@
 import Foundation
 import UIKit
 
-//MARK: - UIImage
+// MARK: - UIImage
 
 extension UIImage {
-    struct Names {
+    enum Names {
         static let circleSliced = "CircleSliced"
         static let circle = "Circle"
     }
 }
 
-//MARK: - Display
+// MARK: - Display
 
 extension DisplayView {
-    struct Names {
+    enum Names {
         static let historyLogNotification = "Calcumate.DisplayView.displayHistory"
         static let pasteNumberNotification = "Calcumate.DisplayView.pasteNumber"
         static let pasteNumberKey = "PasteKey"
-        
     }
 }
 
-//MARK: - LogViewController
-
+// MARK: - LogViewController
 
 extension LogViewController {
-    struct Names {
+    enum Names {
         static let pasteEquationNotification = "Calcumate.LogView.pasteMathEquation"
         static let pasteNumberKey = "PasteKey"
     }
 }
 
-//MARK: - UIStoryboard
+// MARK: - UIStoryboard
 
 extension UIStoryboard {
-    struct Names {
+    enum Names {
         static let mainStoryboard = "Main"
         static let logViewController = String(describing: LogViewController.self)
     }
 }
 
-//MARK: - ThemeManager
+// MARK: - ThemeManager
 
 extension ThemeManager {
-    struct Names {
+    enum Names {
         static let dataStoreThemeIndex = "Calcumate.ThemeManager.ThemeIndex"
     }
 }
 
-//MARK: - Calculator Engine
+// MARK: - Calculator Engine
 
 extension CalculatorEngine {
-    struct Names {
+    enum Names {
         static let dataStore = "Calcumate.CalculatorEngine.PreviousResult"
     }
 }

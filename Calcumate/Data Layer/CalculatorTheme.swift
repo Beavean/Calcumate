@@ -16,17 +16,17 @@ struct CalculatorTheme: Codable {
     let id: String
     let backgroundColor: String
     let displayColor: String
-    
+
     let extraFunctionColor: String
     let extraFunctionTitleColor: String
-    
+
     let operationColor: String
     let operationTitleColor: String
     let operationSelectedColor: String
     let operationTitleSelectedColor: String
-    
+
     let pinPadColor: String
     let pinPadTitleColor: String
-    
+
     let statusBarStyle: StatusBarStyle
 }

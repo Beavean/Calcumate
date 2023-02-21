@@ -5,14 +5,13 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEngineDecimalTests: XCTestCase {
-    
-    func testLeftSideDecimalPinPadNumbers() throws {
-        for leftSidePinPadNumber in 0...9 {
-            for rightSidePinPadNumber in 0...9 {
+final class CalculatorEngineDecimalTests: XCTestCase {
+    func testLeftSideDecimalPinPadNumbers() {
+        for leftSidePinPadNumber in 0 ... 9 {
+            for rightSidePinPadNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSidePinPadNumber)
                 calculatorEngine.decimalPressed()
@@ -27,10 +26,10 @@ class CalculatorEngineDecimalTests: XCTestCase {
             }
         }
     }
-    
-    func testRightSideDecimalPinPadNumbers() throws {
-        for leftSidePinPadNumber in 0...9 {
-            for rightSidePinPadNumber in 0...9 {
+
+    func testRightSideDecimalPinPadNumbers() {
+        for leftSidePinPadNumber in 0 ... 9 {
+            for rightSidePinPadNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSidePinPadNumber)
                 calculatorEngine.addPressed()
@@ -45,10 +44,10 @@ class CalculatorEngineDecimalTests: XCTestCase {
             }
         }
     }
-    
-    func testLeftSideAndRightSideDecimalPinPadNumbers() throws {
-        for leftSidePinPadNumber in 0...9 {
-            for rightSidePinPadNumber in 0...9 {
+
+    func testLeftSideAndRightSideDecimalPinPadNumbers() {
+        for leftSidePinPadNumber in 0 ... 9 {
+            for rightSidePinPadNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSidePinPadNumber)
                 calculatorEngine.decimalPressed()

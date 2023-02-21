@@ -5,65 +5,69 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEngineDivisionTests: XCTestCase {
-    
+final class CalculatorEngineDivisionTests: XCTestCase {
     // MARK: - Equals Button
-    
-    func testPinPadNumberAndEquals() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testPinPadNumberAndEquals() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()
                 calculatorEngine.pinPadPressed(rightSideNumber)
                 calculatorEngine.equalsPressed()
-                XCTAssertTrue(calculatorEngine.displayText == (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted())
+                let resultText = (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted()
+                let result = calculatorEngine.displayText == resultText
+                XCTAssertTrue(result)
             }
         }
     }
-    
-    func testContinuousPinPadNumberAndEquals() throws {
+
+    func testContinuousPinPadNumberAndEquals() {
         var calculatorEngine = CalculatorEngine()
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()
                 calculatorEngine.pinPadPressed(rightSideNumber)
                 calculatorEngine.equalsPressed()
-                XCTAssertTrue(calculatorEngine.displayText == (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted())
+                let resultText = (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted()
+                let result = calculatorEngine.displayText == resultText
+                XCTAssertTrue(result)
             }
         }
     }
-    
+
     // MARK: - Operation Buttons
-    
-    func testPinPadNumberAndOperation() throws {
-        for leftSideNumber in 0...9 {
-            for rightSideNumber in 1...9 {
+
+    func testPinPadNumberAndOperation() {
+        for leftSideNumber in 0 ... 9 {
+            for rightSideNumber in 1 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSideNumber)
                 calculatorEngine.dividePressed()
                 calculatorEngine.pinPadPressed(rightSideNumber)
                 calculatorEngine.dividePressed()
-                XCTAssertTrue(calculatorEngine.displayText == (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted())
+                let resultText = (Decimal(leftSideNumber) / Decimal(rightSideNumber)).formatted()
+                let result = calculatorEngine.displayText == resultText
+                XCTAssertTrue(result)
             }
         }
     }
-    
-    func testContinuousPinPadNumberAndOperation() throws {
-        for leftSideNumber in 0...9 {
+
+    func testContinuousPinPadNumberAndOperation() {
+        for leftSideNumber in 0 ... 9 {
             var calculatorEngine = CalculatorEngine()
             calculatorEngine.pinPadPressed(leftSideNumber)
             calculatorEngine.dividePressed()
-            var result: Decimal = Decimal(leftSideNumber)
-            for rightSideNumber in 1...9 {
+            var result: Decimal = .init(leftSideNumber)
+            for rightSideNumber in 1 ... 9 {
                 calculatorEngine.pinPadPressed(rightSideNumber)
                 calculatorEngine.dividePressed()
-                result = result / Decimal(rightSideNumber)
+                result /= Decimal(rightSideNumber)
                 XCTAssertTrue(calculatorEngine.displayText == result.formatted())
             }
         }

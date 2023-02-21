@@ -7,8 +7,4 @@
 
 import Foundation
 
-extension CalculatorViewController {
-    
-
-
-}
+extension CalculatorViewController {}

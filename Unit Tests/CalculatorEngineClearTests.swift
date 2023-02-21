@@ -5,14 +5,13 @@
 //  Created by Beavean on 25.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class CalculatorEngineClearTests: XCTestCase {
-    
-    func testClear() throws {
-        for leftSidePinPadNumber in 0...9 {
-            for rightSidePinPadNumber in 0...9 {
+final class CalculatorEngineClearTests: XCTestCase {
+    func testClear() {
+        for leftSidePinPadNumber in 0 ... 9 {
+            for rightSidePinPadNumber in 0 ... 9 {
                 var calculatorEngine = CalculatorEngine()
                 calculatorEngine.pinPadPressed(leftSidePinPadNumber)
                 calculatorEngine.addPressed()

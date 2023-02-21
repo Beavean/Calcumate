@@ -5,12 +5,11 @@
 //  Created by Beavean on 18.08.2022.
 //
 
-import XCTest
 @testable import Calcumate
+import XCTest
 
-class MathematicalEquationTests: XCTestCase {
-
-    func testAddition() throws {
+final class MathematicalEquationTests: XCTestCase {
+    func testAddition() {
         var mathEquation = MathematicalEquation(leftSide: .zero)
         mathEquation.leftSide = 4
         mathEquation.operation = .add
@@ -19,8 +18,8 @@ class MathematicalEquationTests: XCTestCase {
         let expectedResult = Decimal(8)
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
-    
-    func testSubtraction() throws {
+
+    func testSubtraction() {
         var mathEquation = MathematicalEquation(leftSide: .zero)
         mathEquation.leftSide = 4
         mathEquation.operation = .subtract
@@ -29,8 +28,8 @@ class MathematicalEquationTests: XCTestCase {
         let expectedResult = Decimal.zero
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
-    
-    func testMultiplication() throws {
+
+    func testMultiplication() {
         var mathEquation = MathematicalEquation(leftSide: .zero)
         mathEquation.leftSide = 4
         mathEquation.operation = .multiply
@@ -39,8 +38,8 @@ class MathematicalEquationTests: XCTestCase {
         let expectedResult = Decimal(16)
         XCTAssertTrue(mathEquation.result?.isEqual(to: expectedResult) ?? false)
     }
-    
-    func testDivision() throws {
+
+    func testDivision() {
         var mathEquation = MathematicalEquation(leftSide: .zero)
         mathEquation.leftSide = 4
         mathEquation.operation = .divide
