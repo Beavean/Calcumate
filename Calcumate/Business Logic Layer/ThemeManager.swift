@@ -22,7 +22,7 @@ final class ThemeManager {
     private(set) var themes: [CalculatorTheme] = []
     private var savedTheme: CalculatorTheme?
     var currentTheme: CalculatorTheme {
-        guard let savedTheme = savedTheme else { return themes.first ?? darkTheme }
+        guard let savedTheme = savedTheme else { return themes.first ?? ThemeManager.CalculatorThemes.dark.theme }
         return savedTheme
     }
 
@@ -34,22 +34,7 @@ final class ThemeManager {
     }
 
     private func createArrayOfThemes() {
-        themes = [darkTheme,
-                  purpleTheme,
-                  bloodOrangeTheme,
-                  darkBlueTheme,
-                  electroTheme,
-                  lightBlueTheme,
-                  lightTheme,
-                  orangeTheme,
-                  pinkTheme,
-                  washedOutTheme,
-                  bumbleBeeTheme,
-                  futuristicTheme,
-                  lipStickTheme,
-                  strangeTheme,
-                  peachTheme,
-                  pinkDotsTheme]
+        themes = ThemeManager.CalculatorThemes.allCases.map { $0.theme }
     }
 
     // MARK: - Save & Restore
