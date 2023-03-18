@@ -4,14 +4,16 @@
 //
 //  Created by Beavean on 17.08.2022.
 //
+// swiftlint: disable type_body_length
 
 import UIKit
 
 final class CalculatorViewController: UIViewController {
     // MARK: - IBOutlets
 
-    @IBOutlet var displayView: DisplayView!
     @IBOutlet var themeChangeButton: UIButton!
+    @IBOutlet var showLogButton: UIButton!
+    @IBOutlet var displayView: DisplayView!
     @IBOutlet var pinPadButton0: UIButton!
     @IBOutlet var pinPadButton1: UIButton!
     @IBOutlet var pinPadButton2: UIButton!
@@ -35,15 +37,9 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Properties
 
     var needToDisplayWelcomeAnimations = true
-
-    // MARK: - Color themes
-
     private var currentTheme: CalculatorTheme {
         return ThemeManager.shared.currentTheme
     }
-
-    // MARK: - Calculator Engine
-
     private var calculatorEngine = CalculatorEngine()
 
     // MARK: - Life Cycle
@@ -94,107 +90,16 @@ final class CalculatorViewController: UIViewController {
         }
     }
 
-    // MARK: - Theme Button actions
+    // MARK: - IBActions
 
     @IBAction func changeThemeButtonPressed(_ sender: UIButton) {
         sender.bounce()
         decorateViewWithNextTheme()
     }
 
-    // MARK: - Decoration
-
-    private func decorateViewWithNextTheme() {
-        ThemeManager.shared.moveToNextTheme()
-        redecorateView()
+    @IBAction func showLogButtonPressed() {
+        presentHistoryLogView()
     }
-
-    private func redecorateView() {
-        view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
-        displayView.backgroundColor = .clear
-        displayView.label.textColor = UIColor(hex: currentTheme.displayColor)
-        themeChangeButton.tintColor = UIColor(hex: currentTheme.displayColor)
-        setNeedsStatusBarAppearanceUpdate()
-        decorateButtons()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        switch currentTheme.statusBarStyle {
-        case .light: return .lightContent
-        case .dark: return .darkContent
-        }
-    }
-
-    private func decorateButtons() {
-        decoratePinPadButton(pinPadButton0, true)
-        decoratePinPadButton(pinPadButton1)
-        decoratePinPadButton(pinPadButton2)
-        decoratePinPadButton(pinPadButton3)
-        decoratePinPadButton(pinPadButton4)
-        decoratePinPadButton(pinPadButton5)
-        decoratePinPadButton(pinPadButton6)
-        decoratePinPadButton(pinPadButton7)
-        decoratePinPadButton(pinPadButton8)
-        decoratePinPadButton(pinPadButton9)
-        decoratePinPadButton(decimalButton)
-        decorateExternalFunctionButton(clearButton)
-        decorateExternalFunctionButton(negateButton)
-        decorateExternalFunctionButton(percentageButton)
-        decorateOperationButton(equalsButton)
-        decorateOperationButton(divideButton)
-        decorateOperationButton(multiplyButton)
-        decorateOperationButton(addButton)
-        decorateOperationButton(minusButton)
-    }
-
-    private func decorateButton(_ button: UIButton, _ usingSlicedImage: Bool = false) {
-        button.tintColor = .orange
-        let image = usingSlicedImage ? UIImage(named: UIImage.Names.circleSliced) : UIImage(named: UIImage.Names.circle)
-        button.setBackgroundImage(image, for: .normal)
-        button.backgroundColor = .clear
-    }
-
-    private func decorateExternalFunctionButton(_ button: UIButton) {
-        decorateButton(button)
-        button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
-        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        if button.isSelected {
-            selectOperationButton(button, true)
-        }
-    }
-
-    private func decorateOperationButton(_ button: UIButton) {
-        decorateButton(button)
-        button.tintColor = UIColor(hex: currentTheme.operationColor)
-        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
-        button.setTitleColor(UIColor(hex: currentTheme.operationTitleSelectedColor), for: .selected)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
-    }
-
-    private func decoratePinPadButton(_ button: UIButton, _ usingSlicedImage: Bool = false) {
-        decorateButton(button, usingSlicedImage)
-        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
-        button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-    }
-
-    // MARK: - Select Operation Buttons
-
-    private func deselectOperationButton() {
-        selectOperationButton(divideButton, false)
-        selectOperationButton(multiplyButton, false)
-        selectOperationButton(minusButton, false)
-        selectOperationButton(addButton, false)
-    }
-
-    private func selectOperationButton(_ button: UIButton, _ selected: Bool) {
-        let operationSelectedColor: UIColor? = UIColor(hex: currentTheme.operationSelectedColor)
-        let operationColor: UIColor? = UIColor(hex: currentTheme.operationColor)
-        button.tintColor = selected ? operationSelectedColor : operationColor
-        button.isSelected = selected
-    }
-
-    // MARK: - IBActions
 
     @IBAction private func clearPressed() {
         clearButton.bounce()
@@ -270,6 +175,107 @@ final class CalculatorViewController: UIViewController {
         let number = sender.tag
         calculatorEngine.pinPadPressed(number)
         refreshDisplay()
+    }
+
+    // MARK: - Decoration
+
+    private func decorateViewWithNextTheme() {
+        ThemeManager.shared.moveToNextTheme()
+        redecorateView()
+    }
+
+    private func redecorateView() {
+        view.backgroundColor = UIColor(hex: currentTheme.backgroundColor)
+        displayView.backgroundColor = .clear
+        let theme = ThemeManager.shared.currentTheme
+        displayView.label.textColor = UIColor(hex: theme.displayColor)
+        setNeedsStatusBarAppearanceUpdate()
+        decorateButtons()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        switch currentTheme.statusBarStyle {
+        case .light: return .lightContent
+        case .dark: return .darkContent
+        }
+    }
+
+    private func decorateButtons() {
+        decoratePinPadButton(pinPadButton0, true)
+        decoratePinPadButton(pinPadButton1)
+        decoratePinPadButton(pinPadButton2)
+        decoratePinPadButton(pinPadButton3)
+        decoratePinPadButton(pinPadButton4)
+        decoratePinPadButton(pinPadButton5)
+        decoratePinPadButton(pinPadButton6)
+        decoratePinPadButton(pinPadButton7)
+        decoratePinPadButton(pinPadButton8)
+        decoratePinPadButton(pinPadButton9)
+        decoratePinPadButton(decimalButton)
+        decorateExternalFunctionButton(clearButton)
+        decorateExternalFunctionButton(negateButton)
+        decorateExternalFunctionButton(percentageButton)
+        decorateOperationButton(equalsButton)
+        decorateOperationButton(divideButton)
+        decorateOperationButton(multiplyButton)
+        decorateOperationButton(addButton)
+        decorateOperationButton(minusButton)
+        decorateSupplementaryButton(themeChangeButton)
+        decorateSupplementaryButton(showLogButton)
+    }
+
+    private func decorateSupplementaryButton(_ button: UIButton) {
+        button.tintColor = UIColor(hex: currentTheme.operationColor)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleSelectedColor), for: .selected)
+    }
+
+    private func decorateButton(_ button: UIButton, _ usingSlicedImage: Bool = false) {
+        button.tintColor = .orange
+        let image = usingSlicedImage ? UIImage(named: UIImage.Names.circleSliced) : UIImage(named: UIImage.Names.circle)
+        button.setBackgroundImage(image, for: .normal)
+        button.backgroundColor = .clear
+    }
+
+    private func decorateExternalFunctionButton(_ button: UIButton) {
+        decorateButton(button)
+        button.tintColor = UIColor(hex: currentTheme.extraFunctionColor)
+        button.setTitleColor(UIColor(hex: currentTheme.extraFunctionTitleColor), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        if button.isSelected {
+            selectOperationButton(button, true)
+        }
+    }
+
+    private func decorateOperationButton(_ button: UIButton) {
+        decorateButton(button)
+        button.tintColor = UIColor(hex: currentTheme.operationColor)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleColor), for: .normal)
+        button.setTitleColor(UIColor(hex: currentTheme.operationTitleSelectedColor), for: .selected)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+    }
+
+    private func decoratePinPadButton(_ button: UIButton, _ usingSlicedImage: Bool = false) {
+        decorateButton(button, usingSlicedImage)
+        button.tintColor = UIColor(hex: currentTheme.pinPadColor)
+        button.setTitleColor(UIColor(hex: currentTheme.pinPadTitleColor), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+    }
+
+    // MARK: - Select Operation Buttons
+
+    private func deselectOperationButton() {
+        selectOperationButton(divideButton, false)
+        selectOperationButton(multiplyButton, false)
+        selectOperationButton(minusButton, false)
+        selectOperationButton(addButton, false)
+    }
+
+    private func selectOperationButton(_ button: UIButton, _ selected: Bool) {
+        let operationSelectedColor: UIColor? = UIColor(hex: currentTheme.operationSelectedColor)
+        let operationColor: UIColor? = UIColor(hex: currentTheme.operationColor)
+        button.tintColor = selected ? operationSelectedColor : operationColor
+        button.isSelected = selected
     }
 
     // MARK: - Refresh Display

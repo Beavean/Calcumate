@@ -11,7 +11,7 @@ import UIKit
 extension UIButton {
     func bounce() {
         UIView.animate(withDuration: 0.05, delay: 0, options: [.curveEaseOut, .allowUserInteraction]) { [weak self] in
-            self?.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         } completion: { _ in
             UIView.animate(withDuration: 0.02,
                            delay: 0,

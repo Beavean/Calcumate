@@ -42,7 +42,6 @@
 		08E8716928B7B692000B6DCD /* CalculatorEngineDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */; };
 		08E8716B28B7B9B7000B6DCD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8716A28B7B9B7000B6DCD /* Constants.swift */; };
 		08E8719628B7C9FC000B6DCD /* Array+SafeAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */; };
-		08E8719828B8DE3D000B6DCD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E8719728B8DE3D000B6DCD /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +93,6 @@
 		08E8716828B7B692000B6DCD /* CalculatorEngineDecimalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorEngineDecimalTests.swift; sourceTree = "<group>"; };
 		08E8716A28B7B9B7000B6DCD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08E8719528B7C9FC000B6DCD /* Array+SafeAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeAccess.swift"; sourceTree = "<group>"; };
-		08E8719728B8DE3D000B6DCD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				0864DA0B28AD1A2400276538 /* CalculatorViewController.swift */,
-				08E8719728B8DE3D000B6DCD /* File.swift */,
 				0839651F28B50A3A00C2E19D /* LogViewController.swift */,
 			);
 			path = ViewControllers;
@@ -377,7 +374,6 @@
 				0864DA2128AE312D00276538 /* CalculatorTheme.swift in Sources */,
 				0864DA0C28AD1A2400276538 /* CalculatorViewController.swift in Sources */,
 				0839652228B50ADA00C2E19D /* EquationTableViewCell.swift in Sources */,
-				08E8719828B8DE3D000B6DCD /* File.swift in Sources */,
 				0839652028B50A3A00C2E19D /* LogViewController.swift in Sources */,
 				0864DA4F28B02B1700276538 /* ColorThemes.swift in Sources */,
 				0864DA0828AD1A2400276538 /* AppDelegate.swift in Sources */,
@@ -584,9 +580,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Beavean.Anthony.Calcumate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -615,9 +614,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Beavean.Anthony.Calcumate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

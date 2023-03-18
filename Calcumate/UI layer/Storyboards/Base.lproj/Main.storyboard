@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="all" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -17,22 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFc-4n-CX5">
-                                <rect key="frame" x="20" y="48" width="374" height="160.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hta-eW-bQa">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="160.5"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="circle.grid.3x3.circle" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="changeThemeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Gy-zk-TSV"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="D6T-bE-wMz">
                                 <rect key="frame" x="20.5" y="208.5" width="373" height="613.5"/>
                                 <subviews>
@@ -339,16 +323,63 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbd-d8-gDb">
+                                <rect key="frame" x="0.0" y="48" width="414" height="160.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZj-x5-UYT">
+                                        <rect key="frame" x="62" y="60" width="290" height="40.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NFc-4n-CX5">
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="40.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hta-eW-bQa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="141" height="40.5"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" image="arrow.triangle.2.circlepath" catalog="system" title="Theme" imagePadding="8" cornerStyle="capsule"/>
+                                                        <connections>
+                                                            <action selector="changeThemeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Gy-zk-TSV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPw-59-Id4">
+                                                        <rect key="frame" x="149" y="0.0" width="141" height="40.5"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" image="clock.arrow.circlepath" catalog="system" title="History" imagePadding="8" cornerStyle="capsule"/>
+                                                        <connections>
+                                                            <action selector="showLogButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="12W-45-PBf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="NFc-4n-CX5" secondAttribute="bottom" id="1Zk-bd-nV8"/>
+                                            <constraint firstItem="NFc-4n-CX5" firstAttribute="top" secondItem="gZj-x5-UYT" secondAttribute="top" id="JPG-ZN-hsO"/>
+                                            <constraint firstAttribute="trailing" secondItem="NFc-4n-CX5" secondAttribute="trailing" id="PdP-O5-yu1"/>
+                                            <constraint firstItem="NFc-4n-CX5" firstAttribute="leading" secondItem="gZj-x5-UYT" secondAttribute="leading" id="pst-iB-KF4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gZj-x5-UYT" firstAttribute="centerX" secondItem="Mbd-d8-gDb" secondAttribute="centerX" id="NCx-I0-PFF"/>
+                                    <constraint firstItem="gZj-x5-UYT" firstAttribute="centerY" secondItem="Mbd-d8-gDb" secondAttribute="centerY" id="lPk-Zg-oTJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NFc-4n-CX5" firstAttribute="bottom" secondItem="D6T-bE-wMz" secondAttribute="top" id="DEC-J9-0Hj"/>
+                            <constraint firstItem="Mbd-d8-gDb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6Ot-BV-xuZ"/>
                             <constraint firstItem="D6T-bE-wMz" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.9" id="EHl-MJ-zqh"/>
-                            <constraint firstItem="NFc-4n-CX5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Epf-7R-ogw"/>
-                            <constraint firstItem="NFc-4n-CX5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gDa-Xz-0Ob"/>
+                            <constraint firstItem="Mbd-d8-gDb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SuW-Ex-Wr4"/>
+                            <constraint firstItem="D6T-bE-wMz" firstAttribute="top" secondItem="Mbd-d8-gDb" secondAttribute="bottom" id="bLF-rw-SOX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mbd-d8-gDb" secondAttribute="trailing" id="ehT-Jg-Qde"/>
+                            <constraint firstItem="gZj-x5-UYT" firstAttribute="height" secondItem="M6Q-vM-AFM" secondAttribute="height" multiplier="0.5" id="hax-GM-jh8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="D6T-bE-wMz" secondAttribute="bottom" constant="40" id="iHJ-Mz-0Mt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NFc-4n-CX5" secondAttribute="trailing" constant="20" id="l9x-HT-LMa"/>
+                            <constraint firstItem="gZj-x5-UYT" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.7" id="nRc-YF-VLS"/>
                             <constraint firstItem="D6T-bE-wMz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="skT-gK-qQA"/>
                         </constraints>
                     </view>
@@ -373,6 +404,7 @@
                         <outlet property="pinPadButton7" destination="CjL-F6-yaX" id="eZv-VJ-tFi"/>
                         <outlet property="pinPadButton8" destination="kTI-Ow-CXm" id="nco-ze-nfG"/>
                         <outlet property="pinPadButton9" destination="jY6-vU-s3c" id="ykO-fM-7YA"/>
+                        <outlet property="showLogButton" destination="JPw-59-Id4" id="1IA-BX-4yS"/>
                         <outlet property="themeChangeButton" destination="hta-eW-bQa" id="Iw9-wB-Ic9"/>
                     </connections>
                 </viewController>
@@ -467,7 +499,8 @@
     </scenes>
     <resources>
         <image name="Tick" width="200" height="200"/>
-        <image name="circle.grid.3x3.circle" catalog="system" width="128" height="123"/>
+        <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="104"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
